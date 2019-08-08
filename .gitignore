@@ -1,0 +1,43 @@
+Our next step is to add a .gitignore file. This file tells Git which type of files to ignore. This is important in software development as compilers and build systems add numerous temporary files and output files that we do not need to track.
+
+To add a .gitignore file just add a new file to the project. To do so, either use the main menu (File then New then File) or right-click on the project and select New then File. Call the file .gitignore and save. Yes, include the dot in front of the name. Ensure the name is correct. Git will only recognise the file with that exact name in the main folder of the repository.
+
+Once the file is created, you need to add the Java specific files to be ignored by Git. This can be found here or below:
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+.idea/
