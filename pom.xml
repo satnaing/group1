@@ -20,7 +20,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.napier.sem.App</mainClass>
+                            <mainClass>com.napier.group1.App</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
