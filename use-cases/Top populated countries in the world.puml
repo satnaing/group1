@@ -5,8 +5,8 @@ actor user as "User"
 rectangle world.sql
 
 rectangle "World Fact Book" {
-    usecase UC4 as "get countries in
-    the world by population"
+    usecase UC4 as "get most populated
+    countries in the world"
 
     usecase UCa as "Print largest to smallest"
 
