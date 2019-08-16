@@ -15,15 +15,15 @@ public class App
         // Connect to database
         a.connect();
 
-//        // Display Top Populated countries in the world
-//        a.getCountry();
-//
-//        // Display Top Populated countries in a continent
-//        a.getCountryInContinent();
-//
-//        // Display Top Populated countries in a region
-//        a.getCountryInRegion();
-//
+        // Display Top Populated countries in the world
+        a.getCountry();
+
+        // Display Top Populated countries in a continent
+        a.getCountryInContinent();
+
+        // Display Top Populated countries in a region
+        a.getCountryInRegion();
+
         // Display Top Populated cities in the world
         a.displayCitiesWorld();
 
@@ -39,8 +39,14 @@ public class App
         // Display Top Populated cities in a continent
         a.displayCitiesDistrict();
 
-//        // All the capital cities in the world organised by largest population to smallest.
-//        a.displayCapitalWorld();
+        // All the capital cities in the world organised by largest population to smallest.
+        a.displayCapitalWorld();
+
+        // All the capital cities in a continent organised by largest population to smallest.
+        a.displayCapitalContinent();
+
+        // All the capital cities in a region organised by largest to smallest.
+        a.displayCapitalRegion();
 
         // Disconnect from database
         a.disconnect();
@@ -564,6 +570,82 @@ public class App
             // Check one is returned
 
             System.out.println("Top Populated Capitals");
+            while (rset.next()){
+                World wd = new World();
+                wd.Name = rset.getString("city.Name");
+                wd.Population = rset.getInt("city.Population");
+                System.out.println(
+                        "Capital:" + wd.Name + "\n" +
+                                "Population: " + wd.Population + "\n");
+            }
+            return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+
+    public World displayCapitalContinent()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, city.Population " +
+                            "FROM city " +
+                            "INNER JOIN country ON country.Capital=city.ID WHERE country.Continent='Asia' " +
+                            "ORDER BY city.Population DESC";
+//
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Check one is returned
+
+            System.out.println("Top Populated Capitals in Asia");
+            while (rset.next()){
+                World wd = new World();
+                wd.Name = rset.getString("city.Name");
+                wd.Population = rset.getInt("city.Population");
+                System.out.println(
+                        "Capital:" + wd.Name + "\n" +
+                                "Population: " + wd.Population + "\n");
+            }
+            return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+
+
+
+    public World displayCapitalRegion()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, city.Population " +
+                            "FROM city " +
+                            "INNER JOIN country ON country.Capital=city.ID WHERE country.Region='Southeast Asia' " +
+                            "ORDER BY city.Population DESC";
+//
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Check one is returned
+
+            System.out.println("Top Populated Capitals in Southeast Asia");
             while (rset.next()){
                 World wd = new World();
                 wd.Name = rset.getString("city.Name");
