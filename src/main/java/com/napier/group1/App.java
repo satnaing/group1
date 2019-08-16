@@ -12,6 +12,11 @@ public class App
         // Connect to database
         a.connect();
 
+        // Get Employee
+        World wd = a.getCountry();
+        // Display results
+//        a.displayCountry(wd);
+
         // Disconnect from database
         a.disconnect();
     }
@@ -79,4 +84,53 @@ public class App
             }
         }
     }
+
+    public World getCountry()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Name, Population "
+                            + "FROM country "
+                            + "ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return new employee if valid.
+            // Check one is returned
+//            if (rset.next())
+//            {
+                while (rset.next()){
+                    World wd = new World();
+                    wd.Name = rset.getString("Name");
+                    wd.Population = rset.getInt("Population");
+                    System.out.println(
+                        "Country:" + wd.Name + "\n" +
+                            "Population: " + wd.Population + "\n");
+                }
+                return null;
+//                return wd;
+//            }
+//            else
+//                return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get employee details");
+            return null;
+        }
+    }
+
+//    public void displayCountry(World wd)
+//    {
+//        if (wd != null)
+//        {
+//            System.out.println(
+//                    "Country:" + wd.Name + "\n" +
+//                            "Population: " + wd.Population + "\n");
+//        }
+//    }
 }
