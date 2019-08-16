@@ -24,17 +24,17 @@ public class App
 //        // Display Top Populated countries in a region
 //        a.getCountryInRegion();
 //
-//        // Display Top Populated cities in the world
-//        a.displayCitiesWorld();
+        // Display Top Populated cities in the world
+        a.displayCitiesWorld();
 
-//        // Display Top Populated cities in a continent
-//        a.displayCitiesContinent();
+        // Display Top Populated cities in a continent
+        a.displayCitiesContinent();
 
-//        // Display Top Populated cities in a continent
-//        a.displayCitiesRegion();
+        // Display Top Populated cities in a continent
+        a.displayCitiesRegion();
 
-//        // Display Top Populated cities in a continent
-//        a.displayCitiesCountry();
+        // Display Top Populated cities in a continent
+        a.displayCitiesCountry();
 //
 //        // Display Top Populated cities in a continent
 //        a.displayCitiesDistrict();
@@ -350,9 +350,13 @@ public class App
             Statement stmt = con.createStatement();
             // Create Asia string for SQL statement
             String strCont =
-                    "SELECT Name, Population "
-                            + "FROM city "
-                            + "ORDER BY Population DESC";
+                    "SELECT city.Name, city.Population " +
+                            "FROM city " +
+                            "INNER JOIN country ON country.Code=city.CountryCode " +
+                            "ORDER BY city.Population DESC";
+//                    "SELECT Name, Population "
+//                            + "FROM city "
+//                            + "ORDER BY Population DESC";
 
             // Execute SQL statement
             ResultSet rsetStr = stmt.executeQuery(strCont);
@@ -391,7 +395,7 @@ public class App
             String strCont =
                     "SELECT city.Name, city.Population " +
                             "FROM city " +
-                            "INNER JOIN country ON country.Code=city.CountryCode " +
+                            "INNER JOIN country ON country.Code=city.CountryCode WHERE country.Continent='Asia' " +
                             "ORDER BY city.Population DESC";
 
             // Execute SQL statement
@@ -400,6 +404,86 @@ public class App
 
             // Displaying Countries of Asia Continent
             System.out.println("Cities in Asia according to Population");
+            System.out.println("-----------------");
+            while (rsetStr.next()){
+                World wd = new World();
+                wd.Name = rsetStr.getString("city.Name");
+                wd.Population = rsetStr.getInt("city.Population");
+                System.out.println(
+                        "City:" + wd.Name + "\n" +
+                                "Population: " + wd.Population + "\n");
+            }
+            System.out.println("-----------------"+ "\n");
+
+            return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details" + e);
+            return null;
+        }
+    }
+
+    public World displayCitiesRegion()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create Cities in region(Southeast Asia) string for SQL statement
+            String strCont =
+                    "SELECT city.Name, city.Population " +
+                            "FROM city " +
+                            "INNER JOIN country ON country.Code=city.CountryCode WHERE country.Region='Southeast Asia' " +
+                            "ORDER BY city.Population DESC";
+
+            // Execute SQL statement
+            ResultSet rsetStr = stmt.executeQuery(strCont);
+            // Check one is returned
+
+            // Displaying Countries of Asia Continent
+            System.out.println("Cities in Southeast Asia according to Population");
+            System.out.println("-----------------");
+            while (rsetStr.next()){
+                World wd = new World();
+                wd.Name = rsetStr.getString("city.Name");
+                wd.Population = rsetStr.getInt("city.Population");
+                System.out.println(
+                        "City:" + wd.Name + "\n" +
+                                "Population: " + wd.Population + "\n");
+            }
+            System.out.println("-----------------"+ "\n");
+
+            return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details" + e);
+            return null;
+        }
+    }
+
+    public World displayCitiesCountry()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create Cities in a Country(Myanmar) string for SQL statement
+            String strCont =
+                    "SELECT city.Name, city.Population " +
+                            "FROM city " +
+                            "INNER JOIN country ON country.Code=city.CountryCode WHERE country.Name='Myanmar' " +
+                            "ORDER BY city.Population DESC";
+
+            // Execute SQL statement
+            ResultSet rsetStr = stmt.executeQuery(strCont);
+            // Check one is returned
+
+            // Displaying Countries of Asia Continent
+            System.out.println("Cities in Myanmar according to Population");
             System.out.println("-----------------");
             while (rsetStr.next()){
                 World wd = new World();
