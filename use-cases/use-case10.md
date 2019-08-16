@@ -1,4 +1,4 @@
-# USE CASE: 4 Produce a City Report 
+# USE CASE: 10 Produce a City Report 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context

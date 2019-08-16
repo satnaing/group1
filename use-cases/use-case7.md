@@ -1,4 +1,4 @@
-# USE CASE: 4 Produce a Report on the population of people living in cities and people not living in cities in each continent, each region and each country
+# USE CASE: 7 Produce a Report on the population of people living in cities and people not living in cities in each continent, each region and each country
 
 ## CHARACTERISTIC INFORMATION
 
@@ -28,7 +28,7 @@ No report is produced.
 
 ### Primary Actor
 
-Scrum Team.
+User.
 
 ### Trigger
 

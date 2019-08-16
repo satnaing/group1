@@ -1,4 +1,4 @@
-# USE CASE: 4 Produce a Report on the top populated countries in the world, a continent and a region as much as user want
+# USE CASE: 2 Produce a Report on the top populated countries in the world, a continent and a region as much as user want
 
 ## CHARACTERISTIC INFORMATION
 
@@ -28,7 +28,7 @@ No report is produced.
 
 ### Primary Actor
 
-Scrum Team.
+User.
 
 ### Trigger
 

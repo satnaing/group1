@@ -1,4 +1,4 @@
-# USE CASE: 4 Produce a Report on all the cities' population in the world, in a continent, in a region, in a country and in a district
+# USE CASE: 3 Produce a Report on all the cities' population in the world, in a continent, in a region, in a country and in a district
 
 ## CHARACTERISTIC INFORMATION
 
@@ -28,7 +28,7 @@ No report is produced.
 
 ### Primary Actor
 
-Scrum Team.
+User.
 
 ### Trigger
 

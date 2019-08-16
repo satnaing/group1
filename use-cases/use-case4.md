@@ -28,7 +28,7 @@ No report is produced.
 
 ### Primary Actor
 
-Scrum Team.
+User.
 
 ### Trigger
 

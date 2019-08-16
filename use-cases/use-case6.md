@@ -1,4 +1,4 @@
-# USE CASE: 4 Produce a Report on the top populated capital cities in the world, in a continent and in a region
+# USE CASE: 6 Produce a Report on the top populated capital cities in the world, in a continent and in a region
 
 ## CHARACTERISTIC INFORMATION
 
@@ -28,7 +28,7 @@ No report is produced.
 
 ### Primary Actor
 
-Scrum Team.
+User.
 
 ### Trigger
 

@@ -1,4 +1,4 @@
-# USE CASE: 4 Produce a Report on the countries' population of the world, a continent and a region
+# USE CASE: 1 Produce a Report on the countries' population of the world, a continent and a region
 
 ## CHARACTERISTIC INFORMATION
 
@@ -28,7 +28,7 @@ No report is produced.
 
 ### Primary Actor
 
-Scrum Team.
+User.
 
 ### Trigger
 

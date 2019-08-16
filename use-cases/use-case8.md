@@ -1,4 +1,4 @@
-# USE CASE: 4 Produce a Report of the number of people who speak Chinese, English, Hindi, Spanish and Arabic
+# USE CASE: 8 Produce a Report of the number of people who speak Chinese, English, Hindi, Spanish and Arabic
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context

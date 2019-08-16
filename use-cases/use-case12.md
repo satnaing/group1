@@ -1,4 +1,4 @@
-# USE CASE: 4 Produce a Population Report 
+# USE CASE: 12 Produce a Population Report 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
