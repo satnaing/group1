@@ -1,0 +1,51 @@
+Product Backlog
+As a product backlog of this coursework is to generate many kinds of reports for the “world.sql” file. Such as population report, language report, country report, city report, capital city report. To do those reports we need to generate these many tasks. 
+•	All the countries in the world organized by largest population to smallest.
+•	All the countries in a continent organized by largest population to smallest.
+•	All the countries in a region organized by largest population to smallest.
+Firstly, according to the organization, we have to generate the populations of all the countries in the world by largest to smallest. 
+
+
+•	The top N populated countries in the world where N is provided by the user.
+•	The top N populated countries in a continent where N is provided by the user.
+•	The top N populated countries in a region where N is provided by the user. 
+After organizing the population of all the countries in the world, we must generate top N populated countries in the world, a continent and in a region where N is provided by the user.
+
+•	All the cities in the world organised by largest population to smallest.
+•	All the cities in a continent organised by largest population to smallest.
+•	All the cities in a region organised by largest population to smallest.
+•	All the cities in a country organised by largest population to smallest.
+•	All the cities in a district organised by largest population to smallest.
+After generated the top populated countries, we will generate all the cities in the world, a continent, a region, a country and in a district organized by largest population to smallest.
+•	The top N populated cities in the world where N is provided by the user.
+•	The top N populated cities in a continent where N is provided by the user.
+•	The top N populated cities in a region where N is provided by the user.
+•	The top N populated cities in a country where N is provided by the user.
+•	The top N populated cities in a district where N is provided by the user.
+This step is to generate the top populated cities in the world, in a continent, in a region, in a country and in a district as much as user provide us to generate.
+
+•	All the capital cities in the world organised by largest population to smallest.
+•	All the capital cities in a continent organised by largest population to smallest.
+•	All the capital cities in a region organised by largest to smallest.
+Now, we must generate all the capital cities in the wold, in a continent and in a region, which are organized by larges to smallest.
+•	The top N populated capital cities in the world where N is provided by the user.
+•	The top N populated capital cities in a continent where N is provided by the user.
+•	The top N populated capital cities in a region where N is provided by the user.
+We also must generate the top N populated capital cities in the world, in a continent and in a region where N is provided by the user.
+ 
+•	The population of people, people living in cities, and people not living in cities in each continent.
+•	The population of people, people living in cities, and people not living in cities in each region.
+•	The population of people, people living in cities, and people not living in cities in each country.
+
+As the final, we must generate the population of people, people living in cities and people not living in cities in each continent, each region and each country according to the SQL file. 
+All the information the we generated from that SQL file should be accessible to the organization such as 
+•	The population of the world.
+•	The population of a continent.
+•	The population of a region.
+•	The population of a country.
+•	The population of a district.
+•	The population of a city.
+According to the organization we must also provide the number of people who speak Chinese, English, Hindi, Spanish and Arabic by sequencing the greatest number to smallest, including the percentage of the world population. 
+We will also provide the “Country Report”, “City Report”, “Capital City Report” and “Population Report”. As the “Country Report”, it will include the information such as: Code, Name, Continent, Region, Population and Capital. As the “City Report”, it will include the information such as: Name, Country, District and Population. As the “Capital City Report”, it will contain the information such as: Name, Country and Population. As the “Population Report”, we will generate with the all information that are requested such as: The name of the continent/region/country, the total population of the continent/region/country, the total population of continent/region/country living in cities including the percentage and the total population of continent/region/country not living in cities including the percentage. 
+
+
