@@ -27,6 +27,11 @@ public class World {
      */
     public int Population;
 
+    /**
+     * Country Capital
+     */
+    public String Capital;
+
 
 
 
