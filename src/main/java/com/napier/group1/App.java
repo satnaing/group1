@@ -35,9 +35,9 @@ public class App
 
         // Display Top Populated cities in a continent
         a.displayCitiesCountry();
-//
-//        // Display Top Populated cities in a continent
-//        a.displayCitiesDistrict();
+
+        // Display Top Populated cities in a continent
+        a.displayCitiesDistrict();
 
 //        // All the capital cities in the world organised by largest population to smallest.
 //        a.displayCapitalWorld();
@@ -444,6 +444,46 @@ public class App
 
             // Displaying Countries of Asia Continent
             System.out.println("Cities in Southeast Asia according to Population");
+            System.out.println("-----------------");
+            while (rsetStr.next()){
+                World wd = new World();
+                wd.Name = rsetStr.getString("city.Name");
+                wd.Population = rsetStr.getInt("city.Population");
+                System.out.println(
+                        "City:" + wd.Name + "\n" +
+                                "Population: " + wd.Population + "\n");
+            }
+            System.out.println("-----------------"+ "\n");
+
+            return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details" + e);
+            return null;
+        }
+    }
+
+    public World displayCitiesDistrict()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create Cities in region(Southeast Asia) string for SQL statement
+            String strCont =
+                    "SELECT city.Name, city.Population " +
+                            "FROM city " +
+                            "INNER JOIN country ON country.Code=city.CountryCode WHERE city.District='New York' " +
+                            "ORDER BY city.Population DESC";
+
+            // Execute SQL statement
+            ResultSet rsetStr = stmt.executeQuery(strCont);
+            // Check one is returned
+
+            // Displaying Countries of Asia Continent
+            System.out.println("Cities in New York according to Population");
             System.out.println("-----------------");
             while (rsetStr.next()){
                 World wd = new World();
