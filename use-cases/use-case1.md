@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As a *Scrum team* we want *to produce a report on the population of countries of the world, a continent and a region organized by largest to smallest* so that *we can support population reporting of the organisation.*
+As a *User* I *to view a report on the population of countries of the world, a continent and a region organized by largest to smallest* so that *we can support population reporting of the organisation.*
 
 ### Scope
 
