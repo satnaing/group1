@@ -1,0 +1,49 @@
+@startuml
+'default
+top to bottom direction
+actor user as "User"
+
+rectangle world.sql
+
+rectangle "World Fact Book" {
+    usecase UC1 as "get countries in
+    the world by population"
+    usecase UC2 as "get countries in
+    a continent by population"
+    usecase UC3 as "get countries in
+    a region by population"
+    usecase UC4 as "get countries in
+    a region by population"
+    usecase UC5 as "get countries in
+    a region by population"
+    usecase UC6 as "get countries in
+    a region by population"
+
+    usecase UCa as "Print largest to smallest"
+
+    :user: -down-> UC1
+    UC1 ..> UCa : include
+    UC1 - world.sql
+
+    :user: -down-> UC2
+    UC2 ..> UCa : include
+    UC2 - world.sql
+
+    :user: -down-> UC3
+    UC3 ..> UCa : include
+    UC3 - world.sql
+
+    :user: -down-> UC4
+    UC4 ..> UCa : include
+    UC4 - world.sql
+
+    :user: -down-> UC5
+    UC5 ..> UCa : include
+    UC5 - world.sql
+
+    :user: -down-> UC6
+    UC6 ..> UCa : include
+    UC6 - world.sql
+}
+
+@enduml
