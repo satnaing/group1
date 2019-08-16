@@ -2,9 +2,6 @@ package com.napier.group1;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.Scanner;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 
 public class App
 {
