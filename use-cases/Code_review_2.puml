@@ -1,0 +1,23 @@
+@startuml
+'default
+top to bottom direction
+actor user as "User"
+
+rectangle world.sql
+
+rectangle "World Fact Book" {
+    usecase UC1 as "get world population
+    information"
+
+
+    usecase UCa as "Print world population
+    information"
+
+    user - UC1
+    UC1 ..> UCa : include
+    UC1 - world.sql
+
+
+}
+
+@enduml
