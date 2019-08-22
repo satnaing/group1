@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As a *Scrum team* we want *to produce a report on the top populated cities in the world, in a continent, in a region, in a country and in a district* so that *we can support population reporting of the organisation.*
+As a *User* we want *to produce a report on the top populated cities in the world, in a continent, in a region, in a country and in a district* so that *we can support population reporting of the organisation.*
 
 ### Scope
 
@@ -20,7 +20,7 @@ We know the role.  Database contains current cities' population data.
 
 ### Success End Condition
 
-A report is available for Scrum team to provide to organziation.
+A report is available for User to provide to organziation.
 
 ### Failed End Condition
 
@@ -32,13 +32,13 @@ User.
 
 ### Trigger
 
-A request for cities' population information is sent to Scrum Master.
+A request for cities' population information is sent to User.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Organizaiton request top populated cities in the world, in a continent, in a region, in a country and in a district
-2. Scrum team extracts top populated cities in the world, in a continent, in a region, in a country and in a district
-3. Scrum team provides report to Organization.
+1. Organization request top populated cities in the world, in a continent, in a region, in a country and in a district
+2. User extracts top populated cities in the world, in a continent, in a region, in a country and in a district
+3. User provides report to Organization.
 
 ## EXTENSIONS
 

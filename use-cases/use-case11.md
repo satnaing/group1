@@ -3,7 +3,7 @@
 
 ### Goal in Context
 
-As a *Scrum team* we want *to produce a Capital City Report* so that *we can support population reporting of the organisation.*
+As a *User* we want *to produce a Capital City Report* so that *we can support population reporting of the organisation.*
 
 ### Scope
 
@@ -19,7 +19,7 @@ We know the role.  Database contains current capital cities' data.
 
 ### Success End Condition
 
-A report is available for Scrum team to provide to organization.
+A report is available for User to provide to organization.
 
 ### Failed End Condition
 
@@ -35,9 +35,9 @@ A request for a Capital City Report
 
 ## MAIN SUCCESS SCENARIO
 
-1. Organizaiton request a Capital City report.
-2. Scrum team extracts a Capital City report.
-3. Scrum team provides report to Organization.
+1. Organization request a Capital City report.
+2. User extracts a Capital City report.
+3. User provides report to Organization.
 
 ## EXTENSIONS
 
