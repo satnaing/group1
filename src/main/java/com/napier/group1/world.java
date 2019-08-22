@@ -5,7 +5,7 @@ import java.sql.*;
 /**
  * Represents a world class
  */
-public class World {
+public class world {
 
     /**
      * Connection to MySQL database.

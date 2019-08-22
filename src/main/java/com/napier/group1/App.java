@@ -10,40 +10,46 @@ public class App
         App a = new App();
 
         // Connect to database
-        a.connect();
+        a.connect("localhost:33060");
 
-        // Display Top Populated countries in the world
+//         Display Top Populated countries in the world
         a.getCountry();
+//
+//        // Display Top Populated countries in a continent
+//        a.getCountryInContinent();
+//
+//        // Display Top Populated countries in a region
+//        a.getCountryInRegion();
+//
+//        // Display Top Populated cities in the world
+//        a.displayCitiesWorld();
+//
+//        // Display Top Populated cities in a continent
+//        a.displayCitiesContinent();
+//
+//        // Display Top Populated cities in a continent
+//        a.displayCitiesRegion();
+//
+//        // Display Top Populated cities in a continent
+//        a.displayCitiesCountry();
+//
+//        // Display Top Populated cities in a continent
+//        a.displayCitiesDistrict();
+//
+//        // All the capital cities in the world organised by largest population to smallest.
+//        a.displayCapitalWorld();
+//
+//        // All the capital cities in a continent organised by largest population to smallest.
+//        a.displayCapitalContinent();
+//
+//        // All the capital cities in a region organised by largest to smallest.
+//        a.displayCapitalRegion();
 
-        // Display Top Populated countries in a continent
-        a.getCountryInContinent();
-
-        // Display Top Populated countries in a region
-        a.getCountryInRegion();
-
-        // Display Top Populated cities in the world
-        a.displayCitiesWorld();
-
-        // Display Top Populated cities in a continent
-        a.displayCitiesContinent();
-
-        // Display Top Populated cities in a continent
-        a.displayCitiesRegion();
-
-        // Display Top Populated cities in a continent
-        a.displayCitiesCountry();
-
-        // Display Top Populated cities in a continent
-        a.displayCitiesDistrict();
-
-        // All the capital cities in the world organised by largest population to smallest.
-        a.displayCapitalWorld();
-
-        // All the capital cities in a continent organised by largest population to smallest.
-        a.displayCapitalContinent();
-
-        // All the capital cities in a region organised by largest to smallest.
-        a.displayCapitalRegion();
+//        Department dept = a.getDepartment("Sales");
+//        ArrayList<Employee> employees = a.getSalariesByDepartment(dept);
+//
+//        // Print salary report
+//        a.printSalaries(employees);
 
         // Disconnect from database
         a.disconnect();
@@ -58,12 +64,12 @@ public class App
     /**
      * Connect to the MySQL database.
      */
-    public void connect()
+    public void connect(String location)
     {
         try
         {
             // Load Database driver
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
         {
@@ -80,7 +86,7 @@ public class App
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             }
@@ -115,7 +121,7 @@ public class App
         }
     }
 
-    public World getCountry()
+    public world getCountry()
     {
         try
         {
@@ -131,7 +137,7 @@ public class App
             // Check one is returned
 
             while (rset.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rset.getString("Name");
                 wd.Population = rset.getInt("Population");
                 System.out.println(
@@ -148,7 +154,7 @@ public class App
         }
     }
 
-    public World getCountryInContinent()
+    public world getCountryInContinent()
     {
         try
         {
@@ -165,7 +171,7 @@ public class App
             System.out.println("Continent : Asia");
             System.out.println("-----------------");
             while (rsetStr.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rsetStr.getString("Name");
                 wd.Population = rsetStr.getInt("Population");
                 System.out.println(
@@ -185,7 +191,7 @@ public class App
             System.out.println("Continent : Europe");
             System.out.println("-----------------");
             while (rsetStrEurope.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rsetStrEurope.getString("Name");
                 wd.Population = rsetStrEurope.getInt("Population");
                 System.out.println(
@@ -205,7 +211,7 @@ public class App
             System.out.println("Continent : North America");
             System.out.println("-----------------");
             while (rsetStrNAmerica.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rsetStrNAmerica.getString("Name");
                 wd.Population = rsetStrNAmerica.getInt("Population");
                 System.out.println(
@@ -225,7 +231,7 @@ public class App
             System.out.println("Continent : Africa");
             System.out.println("-----------------");
             while (rsetStrAfrica.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rsetStrAfrica.getString("Name");
                 wd.Population = rsetStrAfrica.getInt("Population");
                 System.out.println(
@@ -245,7 +251,7 @@ public class App
             System.out.println("Continent : Oceania");
             System.out.println("-----------------");
             while (rsetStrOceania.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rsetStrOceania.getString("Name");
                 wd.Population = rsetStrOceania.getInt("Population");
                 System.out.println(
@@ -265,7 +271,7 @@ public class App
             System.out.println("Continent : Antarctica");
             System.out.println("-----------------");
             while (rsetStrAntarctica.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rsetStrAntarctica.getString("Name");
                 wd.Population = rsetStrAntarctica.getInt("Population");
                 System.out.println(
@@ -285,7 +291,7 @@ public class App
             System.out.println("Continent : South America");
             System.out.println("-----------------");
             while (rsetStrAmerica.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rsetStrAmerica.getString("Name");
                 wd.Population = rsetStrAmerica.getInt("Population");
                 System.out.println(
@@ -306,7 +312,7 @@ public class App
         }
     }
 
-    public World getCountryInRegion()
+    public world getCountryInRegion()
     {
         try
         {
@@ -326,7 +332,7 @@ public class App
             System.out.println("Region : Southeast Asia");
             System.out.println("-----------------");
             while (rsetStr.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rsetStr.getString("Name");
                 wd.Population = rsetStr.getInt("Population");
                 System.out.println(
@@ -345,7 +351,7 @@ public class App
         }
     }
 
-    public World displayCitiesWorld()
+    public world displayCitiesWorld()
     {
         try
         {
@@ -369,7 +375,7 @@ public class App
             System.out.println("Cities in the world according to Population");
             System.out.println("-----------------");
             while (rsetStr.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rsetStr.getString("Name");
                 wd.Population = rsetStr.getInt("Population");
                 System.out.println(
@@ -388,7 +394,7 @@ public class App
         }
     }
 
-    public World displayCitiesContinent()
+    public world displayCitiesContinent()
     {
         try
         {
@@ -409,7 +415,7 @@ public class App
             System.out.println("Cities in Asia according to Population");
             System.out.println("-----------------");
             while (rsetStr.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rsetStr.getString("city.Name");
                 wd.Population = rsetStr.getInt("city.Population");
                 System.out.println(
@@ -428,7 +434,7 @@ public class App
         }
     }
 
-    public World displayCitiesRegion()
+    public world displayCitiesRegion()
     {
         try
         {
@@ -449,7 +455,7 @@ public class App
             System.out.println("Cities in Southeast Asia according to Population");
             System.out.println("-----------------");
             while (rsetStr.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rsetStr.getString("city.Name");
                 wd.Population = rsetStr.getInt("city.Population");
                 System.out.println(
@@ -468,7 +474,7 @@ public class App
         }
     }
 
-    public World displayCitiesDistrict()
+    public world displayCitiesDistrict()
     {
         try
         {
@@ -489,7 +495,7 @@ public class App
             System.out.println("Cities in New York according to Population");
             System.out.println("-----------------");
             while (rsetStr.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rsetStr.getString("city.Name");
                 wd.Population = rsetStr.getInt("city.Population");
                 System.out.println(
@@ -508,7 +514,7 @@ public class App
         }
     }
 
-    public World displayCitiesCountry()
+    public world displayCitiesCountry()
     {
         try
         {
@@ -529,7 +535,7 @@ public class App
             System.out.println("Cities in Myanmar according to Population");
             System.out.println("-----------------");
             while (rsetStr.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rsetStr.getString("city.Name");
                 wd.Population = rsetStr.getInt("city.Population");
                 System.out.println(
@@ -549,7 +555,7 @@ public class App
     }
 
 
-    public World displayCapitalWorld()
+    public world displayCapitalWorld()
     {
         try
         {
@@ -568,7 +574,7 @@ public class App
 
             System.out.println("Top Populated Capitals");
             while (rset.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rset.getString("city.Name");
                 wd.Population = rset.getInt("city.Population");
                 System.out.println(
@@ -586,7 +592,7 @@ public class App
     }
 
 
-    public World displayCapitalContinent()
+    public world displayCapitalContinent()
     {
         try
         {
@@ -605,7 +611,7 @@ public class App
 
             System.out.println("Top Populated Capitals in Asia");
             while (rset.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rset.getString("city.Name");
                 wd.Population = rset.getInt("city.Population");
                 System.out.println(
@@ -625,7 +631,7 @@ public class App
 
 
 
-    public World displayCapitalRegion()
+    public world displayCapitalRegion()
     {
         try
         {
@@ -644,7 +650,7 @@ public class App
 
             System.out.println("Top Populated Capitals in Southeast Asia");
             while (rset.next()){
-                World wd = new World();
+                world wd = new world();
                 wd.Name = rset.getString("city.Name");
                 wd.Population = rset.getInt("city.Population");
                 System.out.println(
