@@ -13,37 +13,40 @@ public class App
         a.connect();
 
         // Display Top Populated countries in the world
-        a.getCountry();
+        Country c1=a.getCountry();
+        //System.out.println(c1.getName()+"\t"+c1.getPopulation());
+        a.displayCountry(c1);
 
-        // Display Top Populated countries in a continent
-        a.getCountryInContinent();
 
-        // Display Top Populated countries in a region
-        a.getCountryInRegion();
-
-        // Display Top Populated cities in the world
-        a.displayCitiesWorld();
-
-        // Display Top Populated cities in a continent
-        a.displayCitiesContinent();
-
-        // Display Top Populated cities in a continent
-        a.displayCitiesRegion();
-
-        // Display Top Populated cities in a continent
-        a.displayCitiesCountry();
-
-        // Display Top Populated cities in a continent
-        a.displayCitiesDistrict();
-
-        // All the capital cities in the world organised by largest population to smallest.
-        a.displayCapitalWorld();
-
-        // All the capital cities in a continent organised by largest population to smallest.
-        a.displayCapitalContinent();
-
-        // All the capital cities in a region organised by largest to smallest.
-        a.displayCapitalRegion();
+//        // Display Top Populated countries in a continent
+//        a.getCountryInContinent();
+//
+//        // Display Top Populated countries in a region
+//        a.getCountryInRegion();
+//
+//        // Display Top Populated cities in the world
+//        a.displayCitiesWorld();
+//
+//        // Display Top Populated cities in a continent
+//        a.displayCitiesContinent();
+//
+//        // Display Top Populated cities in a continent
+//        a.displayCitiesRegion();
+//
+//        // Display Top Populated cities in a continent
+//        a.displayCitiesCountry();
+//
+//        // Display Top Populated cities in a continent
+//        a.displayCitiesDistrict();
+//
+//        // All the capital cities in the world organised by largest population to smallest.
+//        a.displayCapitalWorld();
+//
+//        // All the capital cities in a continent organised by largest population to smallest.
+//        a.displayCapitalContinent();
+//
+//        // All the capital cities in a region organised by largest to smallest.
+//        a.displayCapitalRegion();
 
         // Disconnect from database
         a.disconnect();
@@ -115,10 +118,10 @@ public class App
         }
     }
 
-    public World getCountry()
+    public Country getCountry()
     {
         try
-        {
+        {  Country ctry=null;
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -131,14 +134,14 @@ public class App
             // Check one is returned
 
             while (rset.next()){
-                World wd = new World();
-                wd.Name = rset.getString("Name");
-                wd.Population = rset.getInt("Population");
+                ctry = new Country();
+                ctry.setName(rset.getString("Name"));
+                ctry.setPopulation(rset.getInt("Population"));
                 System.out.println(
-                    "Country:" + wd.Name + "\n" +
-                        "Population: " + wd.Population + "\n");
+                    "Country:" + ctry.getName() + "\n" +
+                        "Population: " + ctry.getPopulation() + "\n");
             }
-            return null;
+            return ctry;
         }
         catch (Exception e)
         {
@@ -146,6 +149,14 @@ public class App
             System.out.println("Failed to get country details");
             return null;
         }
+    }
+    public void displayCountry(Country c)
+    {
+
+        System.out.println(c.getName());
+        System.out.println(c.getPopulation());
+
+
     }
 
     public World getCountryInContinent()
