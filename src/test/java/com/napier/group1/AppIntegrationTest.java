@@ -22,7 +22,9 @@ public class AppIntegrationTest
     @Test
     void testInteGetCity()
     {
+
         City cty = app.getCity(1);
+
         assertEquals(cty.getID(), 1);
         assertEquals(cty.getName(), "Kabul");
         assertEquals(cty.getPopulation(), 1780000);
