@@ -8,27 +8,22 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UnitTesting {
+public class AppIntegrationTest
+{
     static App app;
 
     @BeforeAll
     static void init()
     {
         app = new App();
+        app.connect("localhost:33060");
     }
 
-//    @Test
-//    void displayCountry()
-//    {
-//        app.displayCountry(null);
-//    }
-
     @Test
-    void testInteGetCity()
+    void testgetCountry()
     {
-        City cty = app.getCity(1);
-        assertEquals(cty.getID(), 1);
-        assertEquals(cty.getName(), "Kabul");
-        assertEquals(cty.getPopulation(), 1780000);
+        Country c1=app.getCountry();
+        app.displayCountry(c1);
+//        World emp = app.getCountry("Myanmar");
     }
 }

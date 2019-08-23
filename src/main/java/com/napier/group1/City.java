@@ -10,14 +10,17 @@ public class City {
 
     private String Name;
 
-    public City() {
-    }
+    private String District;
 
-    public City(Country country, int ID, String name, String district) {
+    public City(Country country, int ID, String name, String district, int population) {
         this.country = country;
         this.ID = ID;
         Name = name;
         District = district;
+        Population = population;
+    }
+
+    public City() {
     }
 
     @Override
@@ -27,10 +30,9 @@ public class City {
                 ", ID=" + ID +
                 ", Name='" + Name + '\'' +
                 ", District='" + District + '\'' +
+                ", Population=" + Population +
                 '}';
     }
-
-    private String District;
 
     public Country getCountry() {
         return country;
@@ -63,4 +65,14 @@ public class City {
     public void setDistrict(String district) {
         District = district;
     }
+
+    public int getPopulation() {
+        return Population;
+    }
+
+    public void setPopulation(int population) {
+        Population = population;
+    }
+
+    private int Population;
 }

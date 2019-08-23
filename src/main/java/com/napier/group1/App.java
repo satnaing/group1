@@ -24,6 +24,11 @@ public class App
         ArrayList<Country> c = a.getCountryInContinent();
         a.displayCountryContinent(c);
 
+        // Call city with arg/ test integration city
+        City cty = a .getCity(1);
+        System.out.println(cty);
+
+
 
 //        // Display Top Populated countries in a continent
 //        a.getCountryInContinent();
@@ -665,7 +670,38 @@ public class App
     }
 
 
+    public City getCity(int id)
+    {
+        City city = null;
+        try{
+            // SQL statement is created
+            Statement stmt = con.createStatement();
+            String strSelect = "SELECT city.ID, city.Name, city.District, city.Population FROM city WHERE city.ID = " + id + " ";
 
+            // Executing SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            if (rset == null){
+                System.out.println("City not found!!!");
+            }
+            else{
+//               Return city if valid
+                while(rset.next()){
+                    city = new City();
+                    city.setID(rset.getInt(1));
+                    city.setName(rset.getString(2));
+                    city.setDistrict(rset.getString(3));
+                    city.setPopulation(rset.getInt(4));
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to fetch city!!!");
+        }
+        return city;
+    }
 
     public World displayCapitalRegion()
     {
