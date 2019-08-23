@@ -37,7 +37,7 @@ stages:
   - unit tests
   - integration tests
   - name: deploy
-    if: branch = develop2
+    if: branch = master
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

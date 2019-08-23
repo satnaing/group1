@@ -23,10 +23,9 @@ public class AppIntegrationTest
     void testInteGetCity()
     {
 
-        City cty = app.getCity(1);
-
-        assertEquals(cty.getID(), 1);
-        assertEquals(cty.getName(), "Kabul");
-        assertEquals(cty.getPopulation(), 1780000);
+        City cty = app.getCity(2710);
+        assertEquals(cty.getID(), 2710);
+        assertEquals(cty.getName(), "Rangoon (Yangon)");
+        assertEquals(cty.getPopulation(), 3361700);
     }
 }
