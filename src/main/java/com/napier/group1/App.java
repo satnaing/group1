@@ -11,14 +11,20 @@ public class App
         App a = new App();
 
         // Connect to database
+        if (args.length < 1)
+        {
+            a.connect("localhost:3306");
+        }
+        else
+        {
+            a.connect(args[0]);
+        }
 
 
         // Display Top Populated countries in the world
         Country c1=a.getCountry();
         //System.out.println(c1.getName()+"\t"+c1.getPopulation());
         a.displayCountry(c1);
-
-        a.connect("localhost:33060");
 
 //        Country c2 = a.getCountryInContinent();
         ArrayList<Country> c = a.getCountryInContinent();
