@@ -24,11 +24,9 @@ public class UnitTesting {
 //    }
 
     @Test
-    void testInteGetCity()
+    void CountriesInContinent()
     {
-        City cty = app.getCity(1);
-        assertEquals(cty.getID(), 1);
-        assertEquals(cty.getName(), "Kabul");
-        assertEquals(cty.getPopulation(), 1780000);
+        ArrayList<Country> c= new ArrayList<Country>();
+        app.displayCountryContinent(c);
     }
 }

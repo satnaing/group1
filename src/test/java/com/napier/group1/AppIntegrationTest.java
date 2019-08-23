@@ -20,10 +20,11 @@ public class AppIntegrationTest
     }
 
     @Test
-    void testgetCountry()
+    void testInteGetCity()
     {
-        Country c1=app.getCountry();
-        app.displayCountry(c1);
-//        World emp = app.getCountry("Myanmar");
+        City cty = app.getCity(1);
+        assertEquals(cty.getID(), 1);
+        assertEquals(cty.getName(), "Kabul");
+        assertEquals(cty.getPopulation(), 1780000);
     }
 }
