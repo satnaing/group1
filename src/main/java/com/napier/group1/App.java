@@ -18,6 +18,10 @@ public class App
         //System.out.println(c1.getName()+"\t"+c1.getPopulation());
         a.displayCountry(c1);
 
+        //test integration city
+        City trycty =a.getCity(2710);
+        System.out.println(trycty);
+
 //        Country c2 = a.getCountryInContinent();
         ArrayList<Country> c = a.getCountryInContinent();
         a.displayCountryContinent(c);
@@ -122,6 +126,43 @@ public class App
             }
         }
     }
+
+
+    public City getCity(int id) {
+        City city=null;
+        try{
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            String strSelect = "SELECT ID, Name, District, Population "
+                    +"FROM city "
+                    +"WHERE ID = " + id + " ";
+            //Execute SQL statement
+            ResultSet rset=stmt.executeQuery(strSelect);
+            if (rset == null)
+            {
+                System.out.println("Not Found");
+            }
+            else
+            {
+                //Return new city if valid.
+                while (rset.next()){
+                    city=new City();
+                    city.setID(rset.getInt(1));
+                    city.setName(rset.getString(2));
+                    city.setDistrict(rset.getString(3));
+                    city.setPopulation(rset.getInt(4));
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get one city!");
+        }
+        return city;
+    }
+
+
 
     public Country getCountry()
     {
