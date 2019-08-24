@@ -34,7 +34,8 @@ public class App
         ArrayList<Country> c = a.getCountryInContinent();
         a.displayCountryContinent(c);
 
-
+        ArrayList<Country> countryInCon = a.getCountryInRegion();
+        a.displayCountryInRegion(countryInCon);
 //        // Display Top Populated countries in a continent
 //        a.getCountryInContinent();
 //
@@ -251,128 +252,6 @@ public class App
             }
             System.out.println("-----------------"+ "\n");
 
-//            // Create Europe string for SQL statement
-//            String strContEurope =
-//                    "SELECT Name, Population "
-//                            + "FROM country WHERE continent = 'Europe' "
-//                            + "ORDER BY Population DESC";
-//            // Execute SQL statement
-//            ResultSet rsetStrEurope = stmt.executeQuery(strContEurope);
-//            // Displaying Countries of Europe Continent
-//            System.out.println("Continent : Europe");
-//            System.out.println("-----------------");
-//            while (rsetStrEurope.next()){
-//                World wd = new World();
-//                wd.Name = rsetStrEurope.getString("Name");
-//                wd.Population = rsetStrEurope.getInt("Population");
-//                System.out.println(
-//                        "Country:" + wd.Name + "\n" +
-//                                "Population: " + wd.Population + "\n");
-//            }
-//            System.out.println("-----------------"+ "\n");
-//
-//            // Create North America string for SQL statement
-//            String strContNAmerica =
-//                    "SELECT Name, Population "
-//                            + "FROM country WHERE continent = 'North America' "
-//                            + "ORDER BY Population DESC";
-//            // Execute SQL statement
-//            ResultSet rsetStrNAmerica = stmt.executeQuery(strContNAmerica);
-//            // Displaying Countries of Europe Continent
-//            System.out.println("Continent : North America");
-//            System.out.println("-----------------");
-//            while (rsetStrNAmerica.next()){
-//                World wd = new World();
-//                wd.Name = rsetStrNAmerica.getString("Name");
-//                wd.Population = rsetStrNAmerica.getInt("Population");
-//                System.out.println(
-//                        "Country:" + wd.Name + "\n" +
-//                                "Population: " + wd.Population + "\n");
-//            }
-//            System.out.println("-----------------"+ "\n");
-//
-//            // Create Africa string for SQL statement
-//            String strContAfrica =
-//                    "SELECT Name, Population "
-//                            + "FROM country WHERE continent = 'Africa' "
-//                            + "ORDER BY Population DESC";
-//            // Execute SQL statement
-//            ResultSet rsetStrAfrica = stmt.executeQuery(strContAfrica);
-//            // Displaying Countries of Africa Continent
-//            System.out.println("Continent : Africa");
-//            System.out.println("-----------------");
-//            while (rsetStrAfrica.next()){
-//                World wd = new World();
-//                wd.Name = rsetStrAfrica.getString("Name");
-//                wd.Population = rsetStrAfrica.getInt("Population");
-//                System.out.println(
-//                        "Country:" + wd.Name + "\n" +
-//                                "Population: " + wd.Population + "\n");
-//            }
-//            System.out.println("-----------------"+ "\n");
-//
-//            // Create Oceania string for SQL statement
-//            String strContOceania =
-//                    "SELECT Name, Population "
-//                            + "FROM country WHERE continent = 'Oceania' "
-//                            + "ORDER BY Population DESC";
-//            // Execute SQL statement
-//            ResultSet rsetStrOceania = stmt.executeQuery(strContOceania);
-//            // Displaying Countries of Oceania Continent
-//            System.out.println("Continent : Oceania");
-//            System.out.println("-----------------");
-//            while (rsetStrOceania.next()){
-//                World wd = new World();
-//                wd.Name = rsetStrOceania.getString("Name");
-//                wd.Population = rsetStrOceania.getInt("Population");
-//                System.out.println(
-//                        "Country:" + wd.Name + "\n" +
-//                                "Population: " + wd.Population + "\n");
-//            }
-//            System.out.println("-----------------"+ "\n");
-//
-//            // Create Antarctica string for SQL statement
-//            String strContAntarctica =
-//                    "SELECT Name, Population "
-//                            + "FROM country WHERE continent = 'Antarctica' "
-//                            + "ORDER BY Population DESC";
-//            // Execute SQL statement
-//            ResultSet rsetStrAntarctica = stmt.executeQuery(strContAntarctica);
-//            // Displaying Countries of Europe Continent
-//            System.out.println("Continent : Antarctica");
-//            System.out.println("-----------------");
-//            while (rsetStrAntarctica.next()){
-//                World wd = new World();
-//                wd.Name = rsetStrAntarctica.getString("Name");
-//                wd.Population = rsetStrAntarctica.getInt("Population");
-//                System.out.println(
-//                        "Country:" + wd.Name + "\n" +
-//                                "Population: " + wd.Population + "\n");
-//            }
-//            System.out.println("-----------------"+ "\n");
-//
-//            // Create South America string for SQL statement
-//            String strContAmerica =
-//                    "SELECT Name, Population "
-//                            + "FROM country WHERE continent = 'South America' "
-//                            + "ORDER BY Population DESC";
-//            // Execute SQL statement
-//            ResultSet rsetStrAmerica = stmt.executeQuery(strContAmerica);
-//            // Displaying Countries of South America Continent
-//            System.out.println("Continent : South America");
-//            System.out.println("-----------------");
-//            while (rsetStrAmerica.next()){
-//                World wd = new World();
-//                wd.Name = rsetStrAmerica.getString("Name");
-//                wd.Population = rsetStrAmerica.getInt("Population");
-//                System.out.println(
-//                        "Country:" + wd.Name + "\n" +
-//                                "Population: " + wd.Population + "\n");
-//            }
-//            System.out.println("-----------------"+ "\n");
-
-
-
             return countries;
         }
         catch (Exception e)
@@ -395,15 +274,17 @@ public class App
         }
     }
 
-    public World getCountryInRegion()
+
+    public ArrayList<Country> getCountryInRegion()
     {
+        ArrayList<Country> countries=null;
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create Asia string for SQL statement
             String strCont =
-                    "SELECT Name, Population "
+                    "SELECT Code, Name, Continent, Region, Population, Capital "
                             + "FROM country WHERE Region = 'Southeast Asia' "
                             + "ORDER BY Population DESC";
 
@@ -414,25 +295,46 @@ public class App
             // Displaying Countries of Asia Continent
             System.out.println("Region : Southeast Asia");
             System.out.println("-----------------");
-            while (rsetStr.next()){
-                World wd = new World();
-                wd.Name = rsetStr.getString("Name");
-                wd.Population = rsetStr.getInt("Population");
-                System.out.println(
-                        "Country:" + wd.Name + "\n" +
-                                "Population: " + wd.Population + "\n");
+
+            if (rsetStr == null){
+                System.out.println("No data found!");
+            }
+            else{
+                countries = new ArrayList<>();
+                while (rsetStr.next()){
+                    Country wd = new Country();
+                    wd.setName(rsetStr.getString("Name"));
+                    wd.setPopulation(rsetStr.getInt("Population"));
+//                    System.out.println(
+//                            "Country:" + wd.Name + "\n" +
+//                                    "Population: " + wd.Population + "\n");
+                    countries.add(wd);
+                }
             }
             System.out.println("-----------------"+ "\n");
-
-            return null;
+            return countries;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country details" + e);
+            System.out.println("Failed to get country details : " + e);
             return null;
         }
     }
+
+
+    public void displayCountryInRegion(ArrayList<Country> c)
+    {
+        if (c==null) {
+            System.out.println("No Countries found (or) null value detected");
+        }
+        else{
+            for (Country ct:c) {
+                System.out.println(ct.getName() + ct.getPopulation());
+            }
+        }
+    }
+
 
     public World displayCitiesWorld()
     {
