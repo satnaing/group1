@@ -45,8 +45,8 @@ public class App
 //        // Display Top Populated cities in the world
 //        a.displayCitiesWorld();
 //
-//        // Display Top Populated cities in a continent
-//        a.displayCitiesContinent();
+        // Display Top Populated cities in a continent
+        a.displayCitiesContinent();
 //
 //        // Display Top Populated cities in a continent
 //        a.displayCitiesRegion();
@@ -54,8 +54,8 @@ public class App
 //        // Display Top Populated cities in a continent
 //        a.displayCitiesCountry();
 //
-//        // Display Top Populated cities in a continent
-//        a.displayCitiesDistrict();
+        // Display Top Populated cities in a continent
+        a.displayCitiesDistrict();
 //
 //        // All the capital cities in the world organised by largest population to smallest.
 //        a.displayCapitalWorld();
