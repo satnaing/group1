@@ -1,7 +1,7 @@
 package com.napier.group1;
 
 public class Country {
-    private int Code;
+    private String Code;
 
     private String Name;
 
@@ -9,7 +9,11 @@ public class Country {
 
     private String Region;
 
-    public Country(int code, String name, String continent, String region, int population, String capital) {
+    private int Population;
+
+    private String Capital;
+
+    public Country(String code, String name, String continent, String region, int population, String capital) {
         Code = code;
         Name = name;
         Continent = continent;
@@ -24,7 +28,7 @@ public class Country {
     @Override
     public String toString() {
         return "Country{" +
-                "Code=" + Code +
+                "Code='" + Code + '\'' +
                 ", Name='" + Name + '\'' +
                 ", Continent='" + Continent + '\'' +
                 ", Region='" + Region + '\'' +
@@ -33,11 +37,11 @@ public class Country {
                 '}';
     }
 
-    public int getCode() {
+    public String getCode() {
         return Code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         Code = code;
     }
 
@@ -80,9 +84,4 @@ public class Country {
     public void setCapital(String capital) {
         Capital = capital;
     }
-
-    private int Population;
-
-    private String Capital;
-
 }
