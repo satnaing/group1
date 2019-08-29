@@ -30,9 +30,11 @@ public class App
         a.getSpecificCity(2710);
         //System.out.println(trycty);
 
-        //a.getCity();
-        //a.getCitiesContinent("Asia");
+        a.getCity();
+        a.getCitiesContinent("Asia");
         a.getCitiesRegion("Southeast Asia");
+        a.getCitiesDistrict("Mandalay");
+        a.getCitiesCountry("Myanmar");
 
 //        Country c2 = a.getCountryInContinent();
 
@@ -353,7 +355,7 @@ public class App
             String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
                     +"FROM city "
                     +"INNER JOIN country ON country.Code=city.CountryCode "
-                    + "ORDER BY Population DESC";
+                    + "ORDER BY city.Population DESC";
             //Execute SQL statement
             ResultSet rset=stmt.executeQuery(strSelect);
             if (rset == null)
@@ -401,7 +403,7 @@ public class App
                     +"FROM city "
                     +"INNER JOIN country ON country.Code=city.CountryCode "
                     +"WHERE country.Continent = " + "\"" + continent + "\""
-                    +" ORDER BY Population DESC";
+                    +" ORDER BY city.Population DESC";
             //Execute SQL statement
             ResultSet rset=stmt.executeQuery(strSelect);
             if (rset == null)
@@ -439,7 +441,7 @@ public class App
 
 
     /**
-     * All the cities in a continent
+     * All the cities in a region
      * organised by largest population to smallest.
      */
     public City getCitiesRegion(String region) {
@@ -451,7 +453,7 @@ public class App
                     +"FROM city "
                     +"INNER JOIN country ON country.Code=city.CountryCode "
                     +"WHERE country.Region = " + "\"" + region + "\""
-                    +" ORDER BY Population DESC";
+                    +" ORDER BY city.Population DESC";
             //Execute SQL statement
             ResultSet rset=stmt.executeQuery(strSelect);
             if (rset == null)
@@ -487,84 +489,104 @@ public class App
         return city;
     }
 
-    public World displayCitiesRegion()
-    {
-        try
-        {
-            // Create an SQL statement
+
+    /**
+     * All the cities in a district
+     * organised by largest population to smallest.
+     */
+    public City getCitiesDistrict(String district) {
+        City city=null;
+        try{
+            //Create an SQL statement
             Statement stmt = con.createStatement();
-            // Create Cities in region(Southeast Asia) string for SQL statement
-            String strCont =
-                    "SELECT city.Name, city.Population " +
-                            "FROM city " +
-                            "INNER JOIN country ON country.Code=city.CountryCode WHERE country.Region='Southeast Asia' " +
-                            "ORDER BY city.Population DESC";
-
-            // Execute SQL statement
-            ResultSet rsetStr = stmt.executeQuery(strCont);
-            // Check one is returned
-
-            // Displaying Countries of Asia Continent
-            System.out.println("Cities in Southeast Asia according to Population");
-            System.out.println("-----------------");
-            while (rsetStr.next()){
-                World wd = new World();
-                wd.Name = rsetStr.getString("city.Name");
-                wd.Population = rsetStr.getInt("city.Population");
-                System.out.println(
-                        "City:" + wd.Name + "\n" +
-                                "Population: " + wd.Population + "\n");
+            String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
+                    +"FROM city "
+                    +"INNER JOIN country ON country.Code=city.CountryCode "
+                    +"WHERE city.District = " + "\"" + district + "\""
+                    +" ORDER BY city.Population DESC";
+            //Execute SQL statement
+            ResultSet rset=stmt.executeQuery(strSelect);
+            if (rset == null)
+            {
+                System.out.println("Not Found");
             }
-            System.out.println("-----------------"+ "\n");
-
-            return null;
+            else
+            {
+                System.out.println("Cities in District : " + district);
+                System.out.println("-----------------------");
+                //Return new city if valid.
+                while (rset.next()){
+                    city=new City();
+                    city.setName(rset.getString("city.Name"));
+                    city.setDistrict(rset.getString("city.District"));
+                    city.setPopulation(rset.getInt("city.Population"));
+                    city.setCountryName(rset.getString("country.Name"));
+                    System.out.println(
+                            "Name: " + city.getName() + "\n" +
+                                    "Country: " + city.getCountryName() + "\n" +
+                                    "District: " + city.getDistrict() + "\n" +
+                                    "Population: " + city.getPopulation() + "\n");
+                    System.out.println("-----------------------");
+                }
+                System.out.println("_______________________");
+            }
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country details" + e);
-            return null;
+            System.out.println("Failed to get one city!");
         }
+        return city;
     }
 
-    public World displayCitiesDistrict()
-    {
-        try
-        {
-            // Create an SQL statement
+
+    /**
+     * All the cities in a district
+     * organised by largest population to smallest.
+     */
+    public City getCitiesCountry(String country) {
+        City city=null;
+        try{
+            //Create an SQL statement
             Statement stmt = con.createStatement();
-            // Create Cities in region(Southeast Asia) string for SQL statement
-            String strCont =
-                    "SELECT city.Name, city.Population " +
-                            "FROM city " +
-                            "INNER JOIN country ON country.Code=city.CountryCode WHERE city.District='New York' " +
-                            "ORDER BY city.Population DESC";
-
-            // Execute SQL statement
-            ResultSet rsetStr = stmt.executeQuery(strCont);
-            // Check one is returned
-
-            // Displaying Countries of Asia Continent
-            System.out.println("Cities in New York according to Population");
-            System.out.println("-----------------");
-            while (rsetStr.next()){
-                World wd = new World();
-                wd.Name = rsetStr.getString("city.Name");
-                wd.Population = rsetStr.getInt("city.Population");
-                System.out.println(
-                        "City:" + wd.Name + "\n" +
-                                "Population: " + wd.Population + "\n");
+            String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
+                    +"FROM city "
+                    +"INNER JOIN country ON country.Code=city.CountryCode "
+                    +"WHERE country.Name = " + "\"" + country + "\""
+                    +" ORDER BY city.Population DESC";
+            //Execute SQL statement
+            ResultSet rset=stmt.executeQuery(strSelect);
+            if (rset == null)
+            {
+                System.out.println("Not Found");
             }
-            System.out.println("-----------------"+ "\n");
-
-            return null;
+            else
+            {
+                System.out.println("Cities in Country : " + country);
+                System.out.println("-----------------------");
+                //Return new city if valid.
+                while (rset.next()){
+                    city=new City();
+                    city.setName(rset.getString("city.Name"));
+                    city.setDistrict(rset.getString("city.District"));
+                    city.setPopulation(rset.getInt("city.Population"));
+                    city.setCountryName(rset.getString("country.Name"));
+                    System.out.println(
+                            "Name: " + city.getName() + "\n" +
+                                    "Country: " + city.getCountryName() + "\n" +
+                                    "District: " + city.getDistrict() + "\n" +
+                                    "Population: " + city.getPopulation() + "\n");
+                    System.out.println("-----------------------");
+                }
+                System.out.println("_______________________");
+            }
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country details" + e);
-            return null;
+            System.out.println("Failed to get one city!");
         }
+        return city;
     }
 
     public World displayCitiesCountry()
