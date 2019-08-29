@@ -1,4 +1,5 @@
 # Security Policy
+- GitHub Enterprise is built to support your secure and compliant software development workflows. Commit signing, access management,
 
 ## Supported Versions
 
@@ -12,38 +13,30 @@ currently being supported with security updates.
 | 4.0.x   | :white_check_mark: |
 | < 4.0   | :x:                |
 
-## Reporting a Vulnerability
+## Permissions and controls
+- Create granular administrative and user roles to control access and maintain the security principle of least privilege.
+- GitHub Enterprise supports organizations as logical containers for business units, and repositories and teams help further segment and manage access.
 
-Use this section to tell people how to report a vulnerability.
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is acknowledged or declined, and so on.
+## Adding a security policy to your repository
+- You can give instructions for how to responsibly report a security vulnerability in your project by adding a security policy to your repository.
 
-## Reporting Sensitive Data 
-* Invalidate tokens and passwords.
-* Remove the info and clear the GitHub history
-* Assess impact of leaked private info.
-
-## Reporting GITHUB APP Issues 
-
-* The application access rights.
-* The author/organisation credibility.
-* How good is the app’s security posture - a breach of them gives attackers access to your code!
-* Write more defensively when you push code/data knowing anyone could see.
-* Find it easier and safer if you decide to open source the project.
+In this article
+About security policies
+Adding a security policy to your repository
 
 ## Reporting Projects and monitoring
-* Required reviews
-* Required status checks
-* Continuous integration (CI) and testing
-* Monitoring and logging
-     
+- Required reviews
+- Required status checks
+- Unit testing & Continuous integration testing
 
-## Reporting Security Issues
-* We takes security bugs in the toolkit seriously.
-* We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.
+## Dependency insights
+- When a security vulnerability is released publicly, enterprises need tools to quickly audit dependencies and better understand their exposure. Dependency insights builds on the power of the dependency graph, so enterprises get full visibility into their dependencies, including details on security vulnerabilities and open source licenses.
+
+## Security policy
+- Security is everyone’s job, and well-meaning users often create public issues to let maintainers know about a suspected security bug. Now with support for a security policy, maintainers can reach users as they create new issues to let them know there’s a security policy they should follow. Organizations can also create one security policy for their entire organization that automatically applies to every repository within the organization.
 
 ## Importing Projects 
-* Before importing a project into a public GitHub repo, fully audit the history for sensitive data, and remove it before adding to GitHub.
+- Before importing a project into a public GitHub repo, fully audit the history for sensitive data, and remove it before adding to GitHub.
 
 To report a security issue, email
 [40414311@napier.ac.uk](mailto:40414311@napier.ac.uk?subject=SECURITY) and include the
