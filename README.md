@@ -1,3 +1,12 @@
+# DevOps Group1
+
+| Role  | Member Name | ID |
+| ------------- | ------------- |------------- |
+| Scrum Master | Moe Myint Aung Moe | 40414312 |
+| Product Owner  | Sat Naing | 40414307 |
+| Team Member | Bhone Htut Kyaw | 40414311 |
+| Team Member | Thant Zin Win | 40414305 |
+
 # Software Engineering Method
 
 - Master Build Status [![Build Status](https://travis-ci.org/satnaing/group1.svg?branch=master)](https://travis-ci.org/satnaing/group1)
