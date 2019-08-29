@@ -20,30 +20,35 @@ public class App
             a.connect(args[0]);
         }
 
-
+        /*Country Report*/
         // Display Top Populated countries in the world
         //Country c1=a.getCountry();
         //System.out.println(c1.getName()+"\t"+c1.getPopulation());
         //a.displayCountry(c1);
-
-        // test integration city
-        a.getSpecificCity(2710);
-        //System.out.println(trycty);
-
-        a.getCity();
-        a.getCitiesContinent("Asia");
-        a.getCitiesRegion("Southeast Asia");
-        a.getCitiesDistrict("Mandalay");
-        a.getCitiesCountry("Myanmar");
-
-//        Country c2 = a.getCountryInContinent();
-
 
 //        ArrayList<Country> c = a.getCountryInContinent("North America");
 //        a.displayCountryContinent(c);
 //
 //        ArrayList<Country> countryInReg = a.getCountryInRegion("Southeast Asia");
 //        a.displayCountryInRegion(countryInReg);
+
+        // test integration city
+        //a.getSpecificCity(2710);
+        //System.out.println(trycty);
+
+        /*City Report*/
+//        a.getCity();
+//        a.getCitiesContinent("Asia");
+//        a.getCitiesRegion("Southeast Asia");
+//        a.getCitiesDistrict("Mandalay");
+//        a.getCitiesCountry("Myanmar");
+
+
+        /*Capital City Report*/
+        //a.getCapitalWorld();
+        //a.getCapitalContinent("Asia");
+        a.getCapitalRegion("Southeast Asia");
+
 
 
 
@@ -79,52 +84,6 @@ public class App
 
         // Disconnect from database
         a.disconnect();
-    }
-
-
-    /**
-     * Get Specific City
-     */
-    public City getSpecificCity(int id) {
-        City city=null;
-        try{
-            //Create an SQL statement
-            Statement stmt = con.createStatement();
-            String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
-                    +"FROM city "
-                    +"INNER JOIN country ON country.Code=city.CountryCode "
-                    +"WHERE ID = " + id + " ";
-            //Execute SQL statement
-            ResultSet rset=stmt.executeQuery(strSelect);
-            if (rset == null)
-            {
-                System.out.println("Not Found");
-            }
-            else
-            {
-                System.out.println("Specific city for id : " + id);
-                //Return new city if valid.
-                while (rset.next()){
-                    city=new City();
-                    city.setName(rset.getString("city.Name"));
-                    city.setDistrict(rset.getString("city.District"));
-                    city.setPopulation(rset.getInt("city.Population"));
-                    city.setCountryName(rset.getString("country.Name"));
-                    System.out.println(
-                            "Name: " + city.getName() + "\n" +
-                                    "Country:" + city.getCountryName() + "\n" +
-                                    "District: " + city.getDistrict() + "\n" +
-                                    "Population: " + city.getPopulation() + "\n");
-                    System.out.println("_____________________"+"\n");
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get one city!");
-        }
-        return city;
     }
 
 
@@ -340,6 +299,52 @@ public class App
             }
             System.out.println("_______________________");
         }
+    }
+
+
+    /**
+     * Get Specific City
+     */
+    public City getSpecificCity(int id) {
+        City city=null;
+        try{
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
+                    +"FROM city "
+                    +"INNER JOIN country ON country.Code=city.CountryCode "
+                    +"WHERE ID = " + id + " ";
+            //Execute SQL statement
+            ResultSet rset=stmt.executeQuery(strSelect);
+            if (rset == null)
+            {
+                System.out.println("Not Found");
+            }
+            else
+            {
+                System.out.println("Specific city for id : " + id);
+                //Return new city if valid.
+                while (rset.next()){
+                    city=new City();
+                    city.setName(rset.getString("city.Name"));
+                    city.setDistrict(rset.getString("city.District"));
+                    city.setPopulation(rset.getInt("city.Population"));
+                    city.setCountryName(rset.getString("country.Name"));
+                    System.out.println(
+                            "Name: " + city.getName() + "\n" +
+                                    "Country:" + city.getCountryName() + "\n" +
+                                    "District: " + city.getDistrict() + "\n" +
+                                    "Population: " + city.getPopulation() + "\n");
+                    System.out.println("_____________________"+"\n");
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get one city!");
+        }
+        return city;
     }
 
 
@@ -589,121 +594,148 @@ public class App
         return city;
     }
 
-    public World displayCitiesCountry()
-    {
-        try
-        {
-            // Create an SQL statement
+
+    /**
+     * All the capital cities in the world
+     * organised by largest population to smallest.
+     */
+    public City getCapitalWorld() {
+        City city=null;
+        try{
+            //Create an SQL statement
             Statement stmt = con.createStatement();
-            // Create Cities in a Country(Myanmar) string for SQL statement
-            String strCont =
-                    "SELECT city.Name, city.Population " +
-                            "FROM city " +
-                            "INNER JOIN country ON country.Code=city.CountryCode WHERE country.Name='Myanmar' " +
-                            "ORDER BY city.Population DESC";
-
-            // Execute SQL statement
-            ResultSet rsetStr = stmt.executeQuery(strCont);
-            // Check one is returned
-
-            // Displaying Countries of Asia Continent
-            System.out.println("Cities in Myanmar according to Population");
-            System.out.println("-----------------");
-            while (rsetStr.next()){
-                World wd = new World();
-                wd.Name = rsetStr.getString("city.Name");
-                wd.Population = rsetStr.getInt("city.Population");
-                System.out.println(
-                        "City:" + wd.Name + "\n" +
-                                "Population: " + wd.Population + "\n");
+            String strSelect = "SELECT city.Name, city.Population, country.Name "
+                    +"FROM city "
+                    +"INNER JOIN country ON country.Capital=city.ID "
+                    +" ORDER BY city.Population DESC";
+            //Execute SQL statement
+            ResultSet rset=stmt.executeQuery(strSelect);
+            if (rset == null)
+            {
+                System.out.println("Not Found");
             }
-            System.out.println("-----------------"+ "\n");
-
-            return null;
+            else
+            {
+                System.out.println("Capital Cities in the World Ordered by Population.");
+                System.out.println("-----------------------");
+                //Return new city if valid.
+                while (rset.next()){
+                    city=new City();
+                    city.setName(rset.getString("city.Name"));
+                    city.setPopulation(rset.getInt("city.Population"));
+                    city.setCountryName(rset.getString("country.Name"));
+                    System.out.println(
+                            "Name: " + city.getName() + "\n" +
+                                    "Country: " + city.getCountryName() + "\n" +
+                                    "Population: " + city.getPopulation() + "\n");
+                    System.out.println("-----------------------");
+                }
+                System.out.println("_______________________");
+            }
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country details" + e);
-            return null;
+            System.out.println("Failed to get one city!");
         }
+        return city;
     }
 
 
-    public World displayCapitalWorld()
-    {
-        try
-        {
-            // Create an SQL statement
+    /**
+     * All the capital cities in the world
+     * organised by largest population to smallest.
+     */
+    public City getCapitalContinent(String continent) {
+        City city=null;
+        try{
+            //Create an SQL statement
             Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT city.Name, city.Population " +
-                            "FROM city " +
-                            "INNER JOIN country ON country.Capital=city.ID " +
-                            "ORDER BY city.Population DESC";
-//
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Check one is returned
-
-            System.out.println("Top Populated Capitals");
-            while (rset.next()){
-                World wd = new World();
-                wd.Name = rset.getString("city.Name");
-                wd.Population = rset.getInt("city.Population");
-                System.out.println(
-                        "Capital:" + wd.Name + "\n" +
-                                "Population: " + wd.Population + "\n");
+            String strSelect = "SELECT city.Name, city.Population, country.Name "
+                    +"FROM city "
+                    +"INNER JOIN country ON country.Capital=city.ID "
+                    +"WHERE country.Continent = " + "\"" + continent + "\""
+                    +" ORDER BY city.Population DESC";
+            //Execute SQL statement
+            ResultSet rset=stmt.executeQuery(strSelect);
+            if (rset == null)
+            {
+                System.out.println("Not Found");
             }
-            return null;
+            else
+            {
+                System.out.println("Capital Cities in " + continent + " continent Ordered by Population.");
+                System.out.println("-----------------------");
+                //Return new city if valid.
+                while (rset.next()){
+                    city=new City();
+                    city.setName(rset.getString("city.Name"));
+                    city.setPopulation(rset.getInt("city.Population"));
+                    city.setCountryName(rset.getString("country.Name"));
+                    System.out.println(
+                            "Name: " + city.getName() + "\n" +
+                                    "Country: " + city.getCountryName() + "\n" +
+                                    "Population: " + city.getPopulation() + "\n");
+                    System.out.println("-----------------------");
+                }
+                System.out.println("_______________________");
+            }
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
-            return null;
+            System.out.println("Failed to get one city!");
         }
+        return city;
     }
 
 
-    public World displayCapitalContinent()
-    {
-        try
-        {
-            // Create an SQL statement
+    /**
+     * All the capital cities in a region
+     * organised by largest to smallest.
+     */
+    public City getCapitalRegion(String region) {
+        City city=null;
+        try{
+            //Create an SQL statement
             Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT city.Name, city.Population " +
-                            "FROM city " +
-                            "INNER JOIN country ON country.Capital=city.ID WHERE country.Continent='Asia' " +
-                            "ORDER BY city.Population DESC";
-//
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Check one is returned
-
-            System.out.println("Top Populated Capitals in Asia");
-            while (rset.next()){
-                World wd = new World();
-                wd.Name = rset.getString("city.Name");
-                wd.Population = rset.getInt("city.Population");
-                System.out.println(
-                        "Capital:" + wd.Name + "\n" +
-                                "Population: " + wd.Population + "\n");
+            String strSelect = "SELECT city.Name, city.Population, country.Name "
+                    +"FROM city "
+                    +"INNER JOIN country ON country.Capital=city.ID "
+                    +"WHERE country.Region = " + "\"" + region + "\""
+                    +" ORDER BY city.Population DESC";
+            //Execute SQL statement
+            ResultSet rset=stmt.executeQuery(strSelect);
+            if (rset == null)
+            {
+                System.out.println("Not Found");
             }
-            return null;
+            else
+            {
+                System.out.println("Capital Cities in " + region + " region Ordered by Population.");
+                System.out.println("-----------------------");
+                //Return new city if valid.
+                while (rset.next()){
+                    city=new City();
+                    city.setName(rset.getString("city.Name"));
+                    city.setPopulation(rset.getInt("city.Population"));
+                    city.setCountryName(rset.getString("country.Name"));
+                    System.out.println(
+                            "Name: " + city.getName() + "\n" +
+                                    "Country: " + city.getCountryName() + "\n" +
+                                    "Population: " + city.getPopulation() + "\n");
+                    System.out.println("-----------------------");
+                }
+                System.out.println("_______________________");
+            }
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
-            return null;
+            System.out.println("Failed to get one city!");
         }
+        return city;
     }
-
-
 
 
     public World displayCapitalRegion()
