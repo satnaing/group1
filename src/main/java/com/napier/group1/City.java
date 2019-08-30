@@ -13,15 +13,21 @@ public class City {
 
     private int Population;
 
+    private String CountryCode;
+
+    private String CountryName;
+
     public City() {
     }
 
-    public City(Country country, int ID, String name, String district, int population) {
+    public City(Country country, int ID, String name, String district, int population, String countryCode, String countryName) {
         this.country = country;
         this.ID = ID;
         Name = name;
         District = district;
         Population = population;
+        CountryCode = countryCode;
+        CountryName = countryName;
     }
 
     @Override
@@ -32,6 +38,8 @@ public class City {
                 ", Name='" + Name + '\'' +
                 ", District='" + District + '\'' +
                 ", Population=" + Population +
+                ", CountryCode='" + CountryCode + '\'' +
+                ", CountryName='" + CountryName + '\'' +
                 '}';
     }
 
@@ -73,5 +81,21 @@ public class City {
 
     public void setPopulation(int population) {
         Population = population;
+    }
+
+    public String getCountryCode() {
+        return CountryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        CountryCode = countryCode;
+    }
+
+    public String getCountryName() {
+        return CountryName;
+    }
+
+    public void setCountryName(String countryName) {
+        CountryName = countryName;
     }
 }
