@@ -50,9 +50,12 @@ public class App
         //a.getCapitalRegion("Southeast Asia");
 
         /*Population Report*/
-//        a.populationRegion("Oceania");
-        //System.out.println(a.populationRegion("Southeast Asia"));
-        System.out.println(a.populationLivingInCitiesRegion("Southeast Asia"));
+//        a.totalPopuRegion("Oceania");
+        //System.out.println(a.totalPopuRegion("Southeast Asia"));
+        //System.out.println(a.populationLivingInCitiesRegion("Southeast Asia"));
+        int total = a.totalPopuRegion("Southeast Asia");
+        int liveCities = a.populationLivingInCitiesRegion("Southeast Asia");
+        a.populationRgn(total, liveCities, "Southeast Asia");
 
 
 //        // Display Top Populated countries in a continent
@@ -88,6 +91,8 @@ public class App
         // Disconnect from database
         a.disconnect();
     }
+
+
 
 
     /**
@@ -744,7 +749,7 @@ public class App
     /**
      * Total population in a specific region
      */
-    public int populationRegion(String region) {
+    public int totalPopuRegion(String region) {
         Country cont=null;
         int totalPopulation = 0;
         try{
@@ -760,14 +765,12 @@ public class App
             }
             else
             {
-//                System.out.println("Capital Cities in " + continent + " region Ordered by Population.");
-//                System.out.println("-----------------------");
                 //Return new city if valid.
                 while (rset.next()){
                     cont=new Country();
                     cont.setName(rset.getString("Name"));
                     cont.setPopulation(rset.getInt("Population"));
-                    System.out.println("Name : " + cont.getName() + "\n" + "Population : " + cont.getPopulation());
+                    //System.out.println("Name : " + cont.getName() + "\n" + "Population : " + cont.getPopulation());
                     totalPopulation += cont.getPopulation();
                 }
             }
@@ -791,15 +794,10 @@ public class App
             //Create an SQL statement
             Statement stmt = con.createStatement();
             String strSelect =
-//                    "SELECT Name, Population FROM country WHERE region=" + "\"" + region + "\"";
             "SELECT city.Name, city.Population, country.Region " +
             "FROM city " +
             "INNER JOIN country ON country.Code=city.CountryCode "+
             "WHERE country.Region=" + "\"" + region + "\"";
-//            "SELECT city.Population, city.Name, country.Continent " +
-//                    "FROM city " +
-//                    "INNER JOIN country ON country.Code=city.CountryCode " +
-//                    "WHERE country.Continent='Oceania'";
             //Execute SQL statement
             ResultSet rset=stmt.executeQuery(strSelect);
             if (rset == null)
@@ -814,10 +812,10 @@ public class App
                     cont.setName(rset.getString("city.Name"));
                     cont.setPopulation(rset.getInt("city.Population"));
                     cont.setRegion(rset.getString("country.Region"));
-                    System.out.println(
-                            "Name : " + cont.getName() + "\n" +
-                            "Population : " + cont.getPopulation() + "\n" +
-                            "Region : " + cont.getRegion());
+//                    System.out.println(
+//                            "Name : " + cont.getName() + "\n" +
+//                            "Population : " + cont.getPopulation() + "\n" +
+//                            "Region : " + cont.getRegion());
                     totalPopulation += cont.getPopulation();
                 }
             }
@@ -831,7 +829,28 @@ public class App
     }
 
 
-
+    /**
+     * The population of people,
+     * people living in cities, and
+     * people not living in cities in each continent.
+     */
+    private void populationRgn(int total, int liveCities, String region)
+    {
+        int notLiveCities = 0;
+        double perLiveCities = 0;
+        double perNotLiveCities = 0;
+        notLiveCities = total - liveCities;
+        //per = (liveCities*100)/total;
+        double dtotal = total;
+        double dliveCities = liveCities;
+        perLiveCities = dliveCities/dtotal*100;
+        perNotLiveCities = 100 - perLiveCities;
+        System.out.println(
+                "Region : " + region + "\n" +
+                "Total Population : " + total + "\n" +
+                "People living in Cities : " + liveCities + String.format("%s%.2f%s"," (", perLiveCities,"%) ") + "\n" +
+                "People not living in Cities : " + notLiveCities + String.format("%s%.2f%s"," (", perNotLiveCities,"%)") );
+    }
 
 
     /**
