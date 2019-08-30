@@ -47,9 +47,12 @@ public class App
         /*Capital City Report*/
         //a.getCapitalWorld();
         //a.getCapitalContinent("Asia");
-        a.getCapitalRegion("Southeast Asia");
+        //a.getCapitalRegion("Southeast Asia");
 
-
+        /*Population Report*/
+//        a.populationRegion("Oceania");
+        //System.out.println(a.populationRegion("Southeast Asia"));
+        System.out.println(a.populationLivingInCitiesRegion("Southeast Asia"));
 
 
 //        // Display Top Populated countries in a continent
@@ -738,41 +741,95 @@ public class App
     }
 
 
-    public World displayCapitalRegion()
-    {
-        try
-        {
-            // Create an SQL statement
+    /**
+     * Total population in a specific region
+     */
+    public int populationRegion(String region) {
+        Country cont=null;
+        int totalPopulation = 0;
+        try{
+            //Create an SQL statement
             Statement stmt = con.createStatement();
-            // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name, city.Population " +
-                            "FROM city " +
-                            "INNER JOIN country ON country.Capital=city.ID WHERE country.Region='Southeast Asia' " +
-                            "ORDER BY city.Population DESC";
-//
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Check one is returned
-
-            System.out.println("Top Populated Capitals in Southeast Asia");
-            while (rset.next()){
-                World wd = new World();
-                wd.Name = rset.getString("city.Name");
-                wd.Population = rset.getInt("city.Population");
-                System.out.println(
-                        "Capital:" + wd.Name + "\n" +
-                                "Population: " + wd.Population + "\n");
+                    "SELECT Name, Population FROM country WHERE region=" + "\"" + region + "\"";
+            //Execute SQL statement
+            ResultSet rset=stmt.executeQuery(strSelect);
+            if (rset == null)
+            {
+                System.out.println("Not Found");
             }
-            return null;
+            else
+            {
+//                System.out.println("Capital Cities in " + continent + " region Ordered by Population.");
+//                System.out.println("-----------------------");
+                //Return new city if valid.
+                while (rset.next()){
+                    cont=new Country();
+                    cont.setName(rset.getString("Name"));
+                    cont.setPopulation(rset.getInt("Population"));
+                    System.out.println("Name : " + cont.getName() + "\n" + "Population : " + cont.getPopulation());
+                    totalPopulation += cont.getPopulation();
+                }
+            }
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
-            return null;
+            System.out.println("Failed to get data!");
         }
+        return totalPopulation;
     }
+
+
+    /**
+     * Total population in a specific region
+     */
+    public int populationLivingInCitiesRegion(String region) {
+        Country cont=null;
+        int totalPopulation = 0;
+        try{
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            String strSelect =
+//                    "SELECT Name, Population FROM country WHERE region=" + "\"" + region + "\"";
+            "SELECT city.Name, city.Population, country.Region " +
+            "FROM city " +
+            "INNER JOIN country ON country.Code=city.CountryCode "+
+            "WHERE country.Region=" + "\"" + region + "\"";
+//            "SELECT city.Population, city.Name, country.Continent " +
+//                    "FROM city " +
+//                    "INNER JOIN country ON country.Code=city.CountryCode " +
+//                    "WHERE country.Continent='Oceania'";
+            //Execute SQL statement
+            ResultSet rset=stmt.executeQuery(strSelect);
+            if (rset == null)
+            {
+                System.out.println("Not Found");
+            }
+            else
+            {
+                //Return new city if valid.
+                while (rset.next()){
+                    cont=new Country();
+                    cont.setName(rset.getString("city.Name"));
+                    cont.setPopulation(rset.getInt("city.Population"));
+                    cont.setRegion(rset.getString("country.Region"));
+                    System.out.println(
+                            "Name : " + cont.getName() + "\n" +
+                            "Population : " + cont.getPopulation() + "\n" +
+                            "Region : " + cont.getRegion());
+                    totalPopulation += cont.getPopulation();
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get data!");
+        }
+        return totalPopulation;
+    }
+
 
 
 
