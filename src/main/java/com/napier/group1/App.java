@@ -998,7 +998,7 @@ public class App
                     cont=new Country();
                     cont.setName(rset.getString("Name"));
                     cont.setPopulation(rset.getInt("Population"));
-                    System.out.println("Name : " + cont.getName() + "\n" + "Population : " + cont.getPopulation());
+                    //System.out.println("Name : " + cont.getName() + "\n" + "Population : " + cont.getPopulation());
                     totalPopulation += cont.getPopulation();
                 }
             }
@@ -1077,7 +1077,7 @@ public class App
                         "Total Population : " + total + "\n" +
                         "People living in Cities : " + liveCities + String.format("%s%.2f%s"," (", perLiveCities,"%) ") + "\n" +
                         "People not living in Cities : " + notLiveCities + String.format("%s%.2f%s"," (", perNotLiveCities,"%)") );
-        System.out.println("-----------------------------------------");
+        System.out.println("_________________________________________");
     }
 
 
