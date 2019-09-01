@@ -21,83 +21,52 @@ public class App
         }
 
         /*Country Report*/
-        // Display Top Populated countries in the world
-        //Country c1=a.getCountry();
-        //System.out.println(c1.getName()+"\t"+c1.getPopulation());
-        //a.displayCountry(c1);
+        //Display Top Populated countries in the world
+        Country c1=a.getCountry();
+        System.out.println(c1.getName()+"\t"+c1.getPopulation());
+        a.displayCountry(c1);
 
-//        ArrayList<Country> c = a.getCountryInContinent("North America");
-//        a.displayCountryContinent(c);
-//
-//        ArrayList<Country> countryInReg = a.getCountryInRegion("Southeast Asia");
-//        a.displayCountryInRegion(countryInReg);
+        ArrayList<Country> c = a.getCountryInContinent("North America");
+        a.displayCountryContinent(c);
+
+        ArrayList<Country> countryInReg = a.getCountryInRegion("Southeast Asia");
+        a.displayCountryInRegion(countryInReg);
 
         // test integration city
-        //a.getSpecificCity(2710);
+        a.getSpecificCity(2710);
         //System.out.println(trycty);
 
         /*City Report*/
-//        a.getCity();
-//        a.getCitiesContinent("Asia");
-//        a.getCitiesRegion("Southeast Asia");
-//        a.getCitiesDistrict("Mandalay");
-//        a.getCitiesCountry("Myanmar");
+        a.getCity();
+        a.getCitiesContinent("Asia");
+        a.getCitiesRegion("Southeast Asia");
+        a.getCitiesDistrict("Mandalay");
+        a.getCitiesCountry("Myanmar");
 
 
         /*Capital City Report*/
-        //a.getCapitalWorld();
-        //a.getCapitalContinent("Asia");
-        //a.getCapitalRegion("Southeast Asia");
+        a.getCapitalWorld();
+        a.getCapitalContinent("Asia");
+        a.getCapitalRegion("Southeast Asia");
 
         /*Population Report*/
-//        a.totalPopuRegion("Oceania");
-        //System.out.println(a.totalPopuRegion("Southeast Asia"));
-        //System.out.println(a.populationLivingInCitiesRegion("Southeast Asia"));
+        a.totalPopuRegion("Oceania");
+        System.out.println(a.totalPopuRegion("Southeast Asia"));
+        System.out.println(a.populationLivingInCitiesRegion("Southeast Asia"));
 
 
-//        int total = a.totalPopuRegion("Southeast Asia");
-//        int liveCities = a.populationLivingInCitiesRegion("Southeast Asia");
-//        a.populationRgn(total, liveCities, "Southeast Asia");
+        int total = a.totalPopuRegion("Southeast Asia");
+        int liveCities = a.populationLivingInCitiesRegion("Southeast Asia");
+        a.populationRgn(total, liveCities, "Southeast Asia");
 
-//        String continent = "Asia";
-//        double totalPopuCon = a.totalPopuContinent(continent);
-//        double liveCitiesCon = a.populationLivingInCitiesContinent(continent);
-//        a.populationContinent(totalPopuCon, liveCitiesCon, continent);
+        String continent = "Asia";
+        double totalPopuCon = a.totalPopuContinent(continent);
+        double liveCitiesCon = a.populationLivingInCitiesContinent(continent);
+        a.populationContinent(totalPopuCon, liveCitiesCon, continent);
 
         double totalPopuCountry = a.totalPopuCountry("Myanmar");
         double liveCitiesCountry = a.populationLivingInCitiesCountry("Myanmar");
-        a.populationContinent(totalPopuCountry, liveCitiesCountry, "Myanmar");
-
-
-//        // Display Top Populated countries in a continent
-//        a.getCountryInContinent();
-//
-//        // Display Top Populated countries in a region
-//        a.getCountryInRegion();
-//
-//        // Display Top Populated cities in the world
-//        a.displayCitiesWorld();
-//
-        // Display Top Populated cities in a continent
-        //a.displayCitiesContinent();
-//
-//        // Display Top Populated cities in a continent
-//        a.displayCitiesRegion();
-//
-//        // Display Top Populated cities in a continent
-//        a.displayCitiesCountry();
-//
-        // Display Top Populated cities in a continent
-        //a.displayCitiesDistrict();
-//
-//        // All the capital cities in the world organised by largest population to smallest.
-//        a.displayCapitalWorld();
-//
-//        // All the capital cities in a continent organised by largest population to smallest.
-//        a.displayCapitalContinent();
-//
-//        // All the capital cities in a region organised by largest to smallest.
-//        a.displayCapitalRegion();
+        a.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar");
 
         // Disconnect from database
         a.disconnect();
@@ -845,7 +814,7 @@ public class App
      * people living in cities, and
      * people not living in cities in each continent.
      */
-    private void populationRgn(int total, int liveCities, String region)
+    public void populationRgn(int total, int liveCities, String region)
     {
         int notLiveCities = 0;
         double perLiveCities = 0;
@@ -955,7 +924,7 @@ public class App
      * people living in cities, and
      * people not living in cities in each continent.
      */
-    private void populationContinent(double total, double liveCities, String continent)
+    public void populationContinent(double total, double liveCities, String continent)
     {
         int notLiveCities = 0;
         double perLiveCities = 0;
@@ -1062,7 +1031,7 @@ public class App
      * people living in cities, and
      * people not living in cities in each continent.
      */
-    private void populationCountry(double total, double liveCities, String continent)
+    public void populationCountry(double total, double liveCities, String continent)
     {
         int notLiveCities = 0;
         double perLiveCities = 0;
@@ -1070,7 +1039,7 @@ public class App
         notLiveCities = (int) (total - liveCities);
         perLiveCities = liveCities/total*100;
         perNotLiveCities = 100 - perLiveCities;
-        System.out.println("Population Report in "+ continent + " Continent");
+        System.out.println("Population Report in "+ continent);
         System.out.println("-----------------------------------------");
         System.out.println(
                 "Continent : " + continent + "\n" +
