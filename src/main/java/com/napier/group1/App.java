@@ -1,12 +1,12 @@
 package com.napier.group1;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class App
 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         // Create new Application
         App a = new App();
 
@@ -20,59 +20,229 @@ public class App
             a.connect(args[0]);
         }
 
-        /*Country Report*/
-        //Display Top Populated countries in the world
-        Country c1=a.getCountry();
-        System.out.println(c1.getName()+"\t"+c1.getPopulation());
-        a.displayCountry(c1);
+        // Input Display Method
+        a.mainDisplay();
 
-        ArrayList<Country> c = a.getCountryInContinent("North America");
-        a.displayCountryContinent(c);
-
-        ArrayList<Country> countryInReg = a.getCountryInRegion("Southeast Asia");
-        a.displayCountryInRegion(countryInReg);
-
-        // test integration city
-        a.getSpecificCity(2710);
-        //System.out.println(trycty);
-
-        /*City Report*/
-        a.getCity();
-        a.getCitiesContinent("Asia");
-        a.getCitiesRegion("Southeast Asia");
-        a.getCitiesDistrict("Mandalay");
-        a.getCitiesCountry("Myanmar");
-
-
-        /*Capital City Report*/
-        a.getCapitalWorld();
-        a.getCapitalContinent("Asia");
-        a.getCapitalRegion("Southeast Asia");
-
-        /*Population Report*/
-        a.totalPopuRegion("Oceania");
-        System.out.println(a.totalPopuRegion("Southeast Asia"));
-        System.out.println(a.populationLivingInCitiesRegion("Southeast Asia"));
-
-
-        int total = a.totalPopuRegion("Southeast Asia");
-        int liveCities = a.populationLivingInCitiesRegion("Southeast Asia");
-        a.populationRgn(total, liveCities, "Southeast Asia");
-
-        String continent = "Asia";
-        double totalPopuCon = a.totalPopuContinent(continent);
-        double liveCitiesCon = a.populationLivingInCitiesContinent(continent);
-        a.populationContinent(totalPopuCon, liveCitiesCon, continent);
-
-        double totalPopuCountry = a.totalPopuCountry("Myanmar");
-        double liveCitiesCountry = a.populationLivingInCitiesCountry("Myanmar");
-        a.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar");
+//        /*Country Report*/
+//        //Display Top Populated countries in the world
+        //a.getCountry();
+        //Country c1=a.getCountry();
+//        System.out.println(c1.getName()+"\t"+c1.getPopulation());
+        //a.displayCountry(c1);
+//
+//        ArrayList<Country> c = a.getCountryInContinent("North America");
+//        a.displayCountryContinent(c);
+//
+//        ArrayList<Country> countryInReg = a.getCountryInRegion("Southeast Asia");
+//        a.displayCountryInRegion(countryInReg);
+//
+//        // test integration city
+//        a.getSpecificCity(2710);
+//        //System.out.println(trycty);
+//
+//        /*City Report*/
+//        a.getCity();
+//        a.getCitiesContinent("Asia");
+//        a.getCitiesRegion("Southeast Asia");
+//        a.getCitiesDistrict("Mandalay");
+//        a.getCitiesCountry("Myanmar");
+//
+//
+//        /*Capital City Report*/
+//        a.getCapitalWorld();
+//        a.getCapitalContinent("Asia");
+//        a.getCapitalRegion("Southeast Asia");
+//
+//        /*Population Report*/
+//        a.totalPopuRegion("Oceania");
+//        System.out.println(a.totalPopuRegion("Southeast Asia"));
+//        System.out.println(a.populationLivingInCitiesRegion("Southeast Asia"));
+//
+//
+//        int total = a.totalPopuRegion("Southeast Asia");
+//        int liveCities = a.populationLivingInCitiesRegion("Southeast Asia");
+//        a.populationRgn(total, liveCities, "Southeast Asia");
+//
+//        String continent = "Asia";
+//        double totalPopuCon = a.totalPopuContinent(continent);
+//        double liveCitiesCon = a.populationLivingInCitiesContinent(continent);
+//        a.populationContinent(totalPopuCon, liveCitiesCon, continent);
+//
+//        double totalPopuCountry = a.totalPopuCountry("Myanmar");
+//        double liveCitiesCountry = a.populationLivingInCitiesCountry("Myanmar");
+//        a.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar");
 
         // Disconnect from database
         a.disconnect();
     }
 
+    private void mainDisplay()
+    {
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Welcome to Report System");
+        System.out.println("########################");
 
+        boolean again = false;
+        do {
+            System.out.println("Choose any of the following report type:");
+            System.out.println(
+                    "(1) Country Report. " + "\n" +
+                            "(2) City Report. " + "\n" +
+                            "(3) Capital City Report. " + "\n" +
+                            "(4) Population Report."
+            );
+            System.out.print("Enter an option : ");
+            int rptOption = myObj.nextInt();  // Read user input
+            System.out.println("_________________________");
+
+            // Country Report
+            if (rptOption == 1)
+            {
+                System.out.println("Country Report");
+                System.out.println("-----------------------");
+                System.out.println(
+                        "(1) All the countries in the world organised by largest population to smallest." + "\n" +
+                        "(2) All the countries in a continent organised by largest population to smallest." + "\n" +
+                        "(3) All the countries in a region organised by largest population to smallest."
+                );
+                System.out.print("Enter an option : ");
+                int inputCountryRpt = myObj.nextInt();  // Read user input
+
+                if (inputCountryRpt == 1)
+                {
+                    getCountry();
+                    again = askQuestion();
+                }
+                else if (inputCountryRpt == 2)
+                {
+                    displayCountryContinent(getCountryInContinent());
+                    again = askQuestion();
+                }
+                else if (inputCountryRpt == 3)
+                {
+                    displayCountryInRegion(getCountryInRegion());
+                    again = askQuestion();
+                }
+                else
+                {
+                    again = true;
+                }
+            }
+
+            // City Report
+            else if(rptOption == 2)
+            {
+                System.out.println("City Report");
+                System.out.println("-----------------------");
+                System.out.println(
+                        "(1) All the cities in the world organised by largest population to smallest. " + "\n" +
+                        "(2) All the cities in a continent organised by largest population to smallest. " + "\n" +
+                        "(3) All the cities in a region organised by largest population to smallest. " + "\n" +
+                        "(4) All the cities in a country organised by largest population to smallest. " + "\n" +
+                        "(5) All the cities in a district organised by largest population to smallest."
+                );
+                System.out.print("Enter an option : ");
+                int inputCityRpt = myObj.nextInt();  // Read user input
+
+                if (inputCityRpt == 1)
+                {
+                    getCity();
+                    again = askQuestion();
+                }
+                else if (inputCityRpt == 2)
+                {
+                    getCitiesContinent();
+                    again = askQuestion();
+                }
+                else if (inputCityRpt == 3)
+                {
+                    getCitiesRegion();
+                    again = askQuestion();
+                }
+                else if (inputCityRpt == 4)
+                {
+                    getCitiesCountry();
+                    again = askQuestion();
+                }
+                else if (inputCityRpt == 5)
+                {
+                    getCitiesDistrict();
+                    again = askQuestion();
+                }
+                else{
+                    again = true;
+                }
+            }
+
+            // Capital City Report
+            else if (rptOption == 3)
+            {
+                System.out.println("Capital City Report");
+                System.out.println("-----------------------");
+                System.out.println(
+                        "(1) All the capital cities in the world organised by largest population to smallest. " + "\n" +
+                        "(2) All the capital cities in a continent organised by largest population to smallest. " + "\n" +
+                        "(3) All the capital cities in a region organised by largest to smallest. "
+                );
+                System.out.print("Enter an option : ");
+                int inputCapCityRpt = myObj.nextInt();  // Read user input
+
+                if (inputCapCityRpt == 1)
+                {
+                    getCapitalWorld();
+                    again = askQuestion();
+                }
+                else if (inputCapCityRpt == 2)
+                {
+                    getCapitalContinent();
+                    again = askQuestion();
+                }
+                else if (inputCapCityRpt == 3)
+                {
+                    getCapitalRegion();
+                    again = askQuestion();
+                }
+                else{
+                    again = true;
+                }
+            }
+
+            // Population Report
+            else if (rptOption == 4)
+            {
+                System.out.println("Population Report");  // Output user input
+            }
+            else
+            {
+                System.out.println("Wrong Choice!");  // Output user input
+            }
+        }
+        while (again == true);
+
+    }
+
+    private boolean askQuestion() {
+        Scanner myObj = new Scanner(System.in);
+        System.out.print("Do you want to continue? (Yes/No) : ");
+        String askQ = myObj.nextLine();  // Read user input
+        askQ = askQ.toLowerCase();
+
+        if (askQ.equals("yes"))
+        {
+            System.out.println("_________________________");
+            return true;
+        }
+        else if (askQ.equals("no"))
+        {
+            System.out.println("_________________________");
+            return false;
+        }
+        else
+        {
+            System.out.println("Wrong Input!!! Try Again.");
+            return askQuestion();
+        }
+    }
 
 
     /**
@@ -82,7 +252,8 @@ public class App
     public Country getCountry()
     {
         try
-        {  Country ctry=null;
+        {
+            Country ctry = null;
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -145,17 +316,25 @@ public class App
      * All the countries in a continent
      * organised by largest population to smallest.
      */
-    public ArrayList<Country> getCountryInContinent(String c)
+    public ArrayList<Country> getCountryInContinent()
     {
         ArrayList<Country> countries=null;
         try
         {
+            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+            System.out.println(
+                    "Choose one of the following continent " + "\n" +
+                    "('Asia','Europe','North America','Africa','Oceania','Antarctica','South America')");
+            System.out.print("Enter a continent : ");
+            String continent = myObj.nextLine();
+            System.out.println("_________________________");
+
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create Asia string for SQL statement
             String strCont =
                     "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country WHERE continent = " + "\"" + c + "\"" +
+                            + "FROM country WHERE continent = " + "\"" + continent + "\"" +
             " ORDER BY Population DESC";
             // Execute SQL statement
             ResultSet rsetStr = stmt.executeQuery(strCont);
@@ -218,17 +397,24 @@ public class App
      * All the countries in a region
      * organised by largest population to smallest.
      */
-    public ArrayList<Country> getCountryInRegion(String reg)
+    public ArrayList<Country> getCountryInRegion()
     {
         ArrayList<Country> countries=null;
         try
         {
+            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+            System.out.print(
+                    "Choose a region of the world (eg. Southeast Asia) : ");
+//            System.out.print("Enter a continent : ");
+            String region = myObj.nextLine();
+            System.out.println("_________________________");
+
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create Asia string for SQL statement
             String strCont =
                     "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country WHERE Region = " + "\"" + reg + "\""
+                            + "FROM country WHERE Region = " + "\"" + region + "\""
                             + " ORDER BY Population DESC";
 
             // Execute SQL statement
@@ -387,9 +573,17 @@ public class App
      * All the cities in a continent
      * organised by largest population to smallest.
      */
-    public City getCitiesContinent(String continent) {
+    public City getCitiesContinent() {
         City city=null;
         try{
+            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+            System.out.println(
+                    "Choose one of the following continent " + "\n" +
+                            "('Asia','Europe','North America','Africa','Oceania','Antarctica','South America')");
+            System.out.print("Enter a continent : ");
+            String continent = myObj.nextLine();
+            System.out.println("_________________________");
+
             //Create an SQL statement
             Statement stmt = con.createStatement();
             String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
@@ -437,9 +631,16 @@ public class App
      * All the cities in a region
      * organised by largest population to smallest.
      */
-    public City getCitiesRegion(String region) {
+    public City getCitiesRegion() {
         City city=null;
         try{
+            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+            System.out.print(
+                    "Choose a region of the world (eg. Southeast Asia) : ");
+//            System.out.print("Enter a continent : ");
+            String region = myObj.nextLine();
+            System.out.println("_________________________");
+
             //Create an SQL statement
             Statement stmt = con.createStatement();
             String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
@@ -487,9 +688,15 @@ public class App
      * All the cities in a district
      * organised by largest population to smallest.
      */
-    public City getCitiesDistrict(String district) {
+    public City getCitiesDistrict() {
         City city=null;
         try{
+            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+            System.out.print(
+                    "Enter a district of the world : ");
+            String district = myObj.nextLine();
+            System.out.println("_________________________");
+
             //Create an SQL statement
             Statement stmt = con.createStatement();
             String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
@@ -537,9 +744,15 @@ public class App
      * All the cities in a district
      * organised by largest population to smallest.
      */
-    public City getCitiesCountry(String country) {
+    public City getCitiesCountry() {
         City city=null;
         try{
+            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+            System.out.print(
+                    "Enter a country : ");
+            String country = myObj.nextLine();
+            System.out.println("_________________________");
+
             //Create an SQL statement
             Statement stmt = con.createStatement();
             String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
@@ -634,9 +847,17 @@ public class App
      * All the capital cities in the world
      * organised by largest population to smallest.
      */
-    public City getCapitalContinent(String continent) {
+    public City getCapitalContinent() {
         City city=null;
         try{
+            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+            System.out.println(
+                    "Choose one of the following continent " + "\n" +
+                            "('Asia','Europe','North America','Africa','Oceania','Antarctica','South America')");
+            System.out.print("Enter a continent : ");
+            String continent = myObj.nextLine();
+            System.out.println("_________________________");
+
             //Create an SQL statement
             Statement stmt = con.createStatement();
             String strSelect = "SELECT city.Name, city.Population, country.Name "
@@ -682,9 +903,17 @@ public class App
      * All the capital cities in a region
      * organised by largest to smallest.
      */
-    public City getCapitalRegion(String region) {
+    public City getCapitalRegion() {
         City city=null;
         try{
+            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+            System.out.print(
+                    "Enter a region of the world (eg. Southeast Asia) : ");
+//            System.out.print("Enter a continent : ");
+            String region = myObj.nextLine();
+            System.out.println("_________________________");
+
+
             //Create an SQL statement
             Statement stmt = con.createStatement();
             String strSelect = "SELECT city.Name, city.Population, country.Name "
@@ -816,9 +1045,9 @@ public class App
      */
     public void populationRgn(int total, int liveCities, String region)
     {
-        int notLiveCities = 0;
-        double perLiveCities = 0;
-        double perNotLiveCities = 0;
+        int notLiveCities;
+        double perLiveCities;
+        double perNotLiveCities;
         notLiveCities = total - liveCities;
         //per = (liveCities*100)/total;
         double dtotal = total;
@@ -926,9 +1155,9 @@ public class App
      */
     public void populationContinent(double total, double liveCities, String continent)
     {
-        int notLiveCities = 0;
-        double perLiveCities = 0;
-        double perNotLiveCities = 0;
+        int notLiveCities;
+        double perLiveCities;
+        double perNotLiveCities;
         notLiveCities = (int) (total - liveCities);
         perLiveCities = liveCities/total*100;
         perNotLiveCities = 100 - perLiveCities;
@@ -985,7 +1214,7 @@ public class App
      * Total population living in cities in a specific continent
      */
     public double populationLivingInCitiesCountry(String country) {
-        Country cont=null;
+        Country cont;
         double totalPopulation = 0;
         try{
             //Create an SQL statement
@@ -1033,9 +1262,9 @@ public class App
      */
     public void populationCountry(double total, double liveCities, String continent)
     {
-        int notLiveCities = 0;
-        double perLiveCities = 0;
-        double perNotLiveCities = 0;
+        int notLiveCities;
+        double perLiveCities;
+        double perNotLiveCities;
         notLiveCities = (int) (total - liveCities);
         perLiveCities = liveCities/total*100;
         perNotLiveCities = 100 - perLiveCities;

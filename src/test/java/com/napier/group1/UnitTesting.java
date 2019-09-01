@@ -33,7 +33,7 @@ public class UnitTesting {
     @Test
     void testGetCountryContinent()
     {
-        app.getCountryInContinent(null);
+        app.getCountryInContinent();
     }
 
     @Test
@@ -46,7 +46,7 @@ public class UnitTesting {
     @Test
     void testGetCountryInRegion()
     {
-        app.getCountryInRegion("Southeast Asia");
+        app.getCountryInRegion();
     }
 
     @Test
@@ -68,25 +68,25 @@ public class UnitTesting {
 
     @Test
     void testGetCitiesContinent(){
-        app.getCitiesContinent("Asia");
+        app.getCitiesContinent();
     }
 
 
     @Test
     void testGetCitiesRegion(){
-        app.getCitiesRegion("Southeast Asia");
+        app.getCitiesRegion();
     }
 
 
     @Test
     void testgetCitiesDistrict(){
-        app.getCitiesDistrict(null);
+        app.getCitiesDistrict();
     }
 
 
     @Test
     void testgetCitiesCountry(){
-        app.getCitiesCountry(null);
+        app.getCitiesCountry();
     }
 
 
@@ -98,13 +98,13 @@ public class UnitTesting {
 
     @Test
     void testgetCapitalContinent(){
-        app.getCapitalContinent(null);
+        app.getCapitalContinent();
     }
 
 
     @Test
     void testgetCapitalRegion(){
-        app.getCapitalRegion(null);
+        app.getCapitalRegion();
     }
 
 
