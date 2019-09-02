@@ -21,7 +21,7 @@ public class App
         }
 
         // Input Display Method
-        //a.mainDisplay();
+        a.mainDisplay();
 
 //        /*Country Report*/
 //        //Display Top Populated countries in the world
