@@ -54,11 +54,11 @@ public class UnitTesting {
         app.displayCountry(null);
     }
 
-    @Test
-    void testGetCountryContinent()
-    {
-        app.getCountryInContinent();
-    }
+//    @Test
+//    void testGetCountryContinent()
+//    {
+//        app.getCountryInContinent();
+//    }
 
     @Test
     void testCountriesInContinent()
@@ -102,95 +102,95 @@ public class UnitTesting {
     }
 
 
-    @Test
-    void testgetCitiesDistrict(){
-        app.getCitiesDistrict();
-    }
+//    @Test
+//    void testgetCitiesDistrict(){
+//        app.getCitiesDistrict();
+//    }
+
+
+//    @Test
+//    void testgetCitiesCountry(){
+//        app.getCitiesCountry(null);
+//    }
 
 
     @Test
-    void testgetCitiesCountry(){
-        app.getCitiesCountry(null);
+    void testgetCapitalWorld(){
+        app.getCapitalWorld();
     }
-
-
-//    @Test
-//    void testgetCapitalWorld(){
-//        app.getCapitalWorld();
-//    }
 //
 //
-//    @Test
-//    void testgetCapitalContinent(){
-//        app.getCapitalContinent(null);
-//    }
+    @Test
+    void testgetCapitalContinent(){
+        app.getCapitalContinent(null);
+    }
 //
 //
-//    @Test
-//    void testgetCapitalRegion(){
-//        app.getCapitalRegion(null);
-//    }
+    @Test
+    void testgetCapitalRegion(){
+        app.getCapitalRegion(null);
+    }
 //
 //
-//    @Test
-//    void testtotalPopuRegion(){
-//        app.totalPopuRegion(null);
-//    }
+    @Test
+    void testtotalPopuRegion(){
+        app.totalPopuRegion(null);
+    }
 //
 //
-//    @Test
-//    void testPopulationLivingInCitiesRegion(){
-//        app.populationLivingInCitiesRegion(null);
-//    }
+    @Test
+    void testPopulationLivingInCitiesRegion(){
+        app.populationLivingInCitiesRegion(null);
+    }
 //
 //
-//    @Test
-//    void testpopulationRgn(){
-//        int total = app.totalPopuRegion(null);
-//        int liveCities = app.populationLivingInCitiesRegion("Southeast Asia");
-//        app.populationRgn(total, liveCities, "Southeast Asia");
-//    }
+    @Test
+    void testpopulationRgn(){
+        int total = app.totalPopuRegion(null);
+        int liveCities = app.populationLivingInCitiesRegion("Southeast Asia");
+        app.populationRgn(total, liveCities, "Southeast Asia");
+    }
 //
 //
-//    @Test
-//    void testtotalPopuContinent(){
-//        app.totalPopuContinent(null);
-//    }
+    @Test
+    void testtotalPopuContinent(){
+        app.totalPopuContinent(null);
+    }
 //
 //
-//    @Test
-//    void testpopulationLivingInCitiesContinent(){
-//        app.populationLivingInCitiesContinent(null);
-//    }
+    @Test
+    void testpopulationLivingInCitiesContinent(){
+        app.populationLivingInCitiesContinent(null);
+    }
 //
 //
-//    @Test
-//    void populationContinent(){
-//        String continent = "Asia";
-//        double totalPopuCon = app.totalPopuContinent(null);
-//        double liveCitiesCon = app.populationLivingInCitiesContinent(continent);
-//        app.populationContinent(totalPopuCon, liveCitiesCon, continent);
-//    }
+    @Test
+    void populationContinent(){
+        String continent = "Asia";
+        double totalPopuCon = app.totalPopuContinent(null);
+        double liveCitiesCon = app.populationLivingInCitiesContinent(continent);
+        app.populationContinent(totalPopuCon, liveCitiesCon, continent);
+    }
 //
 //
-//    @Test
-//    void testtotalPopuCountry(){
-//        app.totalPopuCountry(null);
-//    }
+    @Test
+    void testtotalPopuCountry(){
+        app.totalPopuCountry(null);
+    }
 //
 //
-//    @Test
-//    void testPopulationLivingInCitiesCountry(){
-//        app.populationLivingInCitiesCountry(null);
-//    }
+    @Test
+    void testPopulationLivingInCitiesCountry(){
+        app.populationLivingInCitiesCountry(null);
+    }
 //
 //
-//    @Test
-//    void testPopulationCountry(){
-//        double totalPopuCountry = app.totalPopuCountry(null);
-//        double liveCitiesCountry = app.populationLivingInCitiesCountry("Myanmar");
-//        app.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar"   );
-//    }
+    @Test
+    void testPopulationCountry(){
+        double totalPopuCountry = app.totalPopuCountry(null);
+        double liveCitiesCountry = app.populationLivingInCitiesCountry("Myanmar");
+        app.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar"   );
+    }
 //    getCitiesDistrict
 //            getCitiesCountry
 //    getCapitalWorld
