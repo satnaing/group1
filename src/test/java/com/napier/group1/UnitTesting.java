@@ -19,6 +19,30 @@ public class UnitTesting {
     }
 
     @Test
+    void testMainDisplay()
+    {
+        app.mainDisplay();
+    }
+
+    @Test
+    void testAskContinent()
+    {
+        app.askContinent();
+    }
+
+    @Test
+    void testAskRegion()
+    {
+        app.askRegion();
+    }
+
+    @Test
+    void testAskCountry()
+    {
+        app.askCountry();
+    }
+
+    @Test
     void testGetCountry()
     {
         Country c1 = app.getCountry();
@@ -46,7 +70,7 @@ public class UnitTesting {
     @Test
     void testGetCountryInRegion()
     {
-        app.getCountryInRegion();
+        app.getCountryInRegion(null);
     }
 
     @Test
@@ -68,13 +92,13 @@ public class UnitTesting {
 
     @Test
     void testGetCitiesContinent(){
-        app.getCitiesContinent();
+        app.getCitiesContinent(null);
     }
 
 
     @Test
     void testGetCitiesRegion(){
-        app.getCitiesRegion();
+        app.getCitiesRegion(null);
     }
 
 
@@ -86,7 +110,7 @@ public class UnitTesting {
 
     @Test
     void testgetCitiesCountry(){
-        app.getCitiesCountry();
+        app.getCitiesCountry(null);
     }
 
 
@@ -98,13 +122,13 @@ public class UnitTesting {
 
     @Test
     void testgetCapitalContinent(){
-        app.getCapitalContinent();
+        app.getCapitalContinent(null);
     }
 
 
     @Test
     void testgetCapitalRegion(){
-        app.getCapitalRegion();
+        app.getCapitalRegion(null);
     }
 
 
@@ -122,7 +146,7 @@ public class UnitTesting {
 
     @Test
     void testpopulationRgn(){
-        int total = app.totalPopuRegion("Southeast Asia");
+        int total = app.totalPopuRegion(null);
         int liveCities = app.populationLivingInCitiesRegion("Southeast Asia");
         app.populationRgn(total, liveCities, "Southeast Asia");
     }
@@ -143,7 +167,7 @@ public class UnitTesting {
     @Test
     void populationContinent(){
         String continent = "Asia";
-        double totalPopuCon = app.totalPopuContinent(continent);
+        double totalPopuCon = app.totalPopuContinent(null);
         double liveCitiesCon = app.populationLivingInCitiesContinent(continent);
         app.populationContinent(totalPopuCon, liveCitiesCon, continent);
     }
@@ -163,7 +187,7 @@ public class UnitTesting {
 
     @Test
     void testPopulationCountry(){
-        double totalPopuCountry = app.totalPopuCountry("Myanmar");
+        double totalPopuCountry = app.totalPopuCountry(null);
         double liveCitiesCountry = app.populationLivingInCitiesCountry("Myanmar");
         app.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar"   );
     }
