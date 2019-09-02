@@ -21,56 +21,56 @@ public class App
         }
 
         // Input Display Method
-        //a.mainDisplay();
+        a.mainDisplay();
 
-//        /*Country Report*/
-//        //Display Top Populated countries in the world
-        //a.getCountry();
-        //Country c1=a.getCountry();
-//        System.out.println(c1.getName()+"\t"+c1.getPopulation());
-        //a.displayCountry(c1);
-//
-//        ArrayList<Country> c = a.getCountryInContinent("North America");
-//        a.displayCountryContinent(c);
-//
-//        ArrayList<Country> countryInReg = a.getCountryInRegion("Southeast Asia");
-//        a.displayCountryInRegion(countryInReg);
-//
-//        // test integration city
-//        a.getSpecificCity(2710);
-//        //System.out.println(trycty);
-//
-//        /*City Report*/
-//        a.getCity();
-//        a.getCitiesContinent("Asia");
-//        a.getCitiesRegion("Southeast Asia");
-//        a.getCitiesDistrict("Mandalay");
-//        a.getCitiesCountry("Myanmar");
-//
-//
-//        /*Capital City Report*/
-//        a.getCapitalWorld();
-//        a.getCapitalContinent("Asia");
-//        a.getCapitalRegion("Southeast Asia");
-//
-//        /*Population Report*/
-//        a.totalPopuRegion("Oceania");
-//        System.out.println(a.totalPopuRegion("Southeast Asia"));
-//        System.out.println(a.populationLivingInCitiesRegion("Southeast Asia"));
-//
-//
-//        int total = a.totalPopuRegion("Southeast Asia");
-//        int liveCities = a.populationLivingInCitiesRegion("Southeast Asia");
-//        a.populationRgn(total, liveCities, "Southeast Asia");
-//
-//        String continent = "Asia";
-//        double totalPopuCon = a.totalPopuContinent(continent);
-//        double liveCitiesCon = a.populationLivingInCitiesContinent(continent);
-//        a.populationContinent(totalPopuCon, liveCitiesCon, continent);
-//
-//        double totalPopuCountry = a.totalPopuCountry("Myanmar");
-//        double liveCitiesCountry = a.populationLivingInCitiesCountry("Myanmar");
-//        a.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar");
+        /*Country Report*/
+        //Display Top Populated countries in the world
+        a.getCountry();
+        Country c1=a.getCountry();
+        System.out.println(c1.getName()+"\t"+c1.getPopulation());
+        a.displayCountry(c1);
+
+        ArrayList<Country> c = a.getCountryInContinent("North America");
+        a.displayCountryContinent(c);
+
+        ArrayList<Country> countryInReg = a.getCountryInRegion("Southeast Asia");
+        a.displayCountryInRegion(countryInReg);
+
+        // test integration city
+        a.getSpecificCity(2710);
+        //System.out.println(trycty);
+
+        /*City Report*/
+        a.getCity();
+        a.getCitiesContinent("Asia");
+        a.getCitiesRegion("Southeast Asia");
+        a.getCitiesDistrict();
+        a.getCitiesCountry("Myanmar");
+
+
+        /*Capital City Report*/
+        a.getCapitalWorld();
+        a.getCapitalContinent("Asia");
+        a.getCapitalRegion("Southeast Asia");
+
+        /*Population Report*/
+        a.totalPopuRegion("Oceania");
+        System.out.println(a.totalPopuRegion("Southeast Asia"));
+        System.out.println(a.populationLivingInCitiesRegion("Southeast Asia"));
+
+
+        int total = a.totalPopuRegion("Southeast Asia");
+        int liveCities = a.populationLivingInCitiesRegion("Southeast Asia");
+        a.populationRgn(total, liveCities, "Southeast Asia");
+
+        String continent = "Asia";
+        double totalPopuCon = a.totalPopuContinent(continent);
+        double liveCitiesCon = a.populationLivingInCitiesContinent(continent);
+        a.populationContinent(totalPopuCon, liveCitiesCon, continent);
+
+        double totalPopuCountry = a.totalPopuCountry("Myanmar");
+        double liveCitiesCountry = a.populationLivingInCitiesCountry("Myanmar");
+        a.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar");
 
         // Disconnect from database
         a.disconnect();
@@ -115,7 +115,7 @@ public class App
                 }
                 else if (inputCountryRpt == 2)
                 {
-                    displayCountryContinent(getCountryInContinent());
+                    displayCountryContinent(getCountryInContinent(askContinent()));
                     again = askQuestion();
                 }
                 else if (inputCountryRpt == 3)
@@ -389,19 +389,11 @@ public class App
      * All the countries in a continent
      * organised by largest population to smallest.
      */
-    public ArrayList<Country> getCountryInContinent()
+    public ArrayList<Country> getCountryInContinent(String continent)
     {
         ArrayList<Country> countries=null;
         try
         {
-            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-            System.out.println(
-                    "Choose one of the following continent " + "\n" +
-                    "('Asia','Europe','North America','Africa','Oceania','Antarctica','South America')");
-            System.out.print("Enter a continent : ");
-            String continent = myObj.nextLine();
-            System.out.println("_________________________");
-
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create Asia string for SQL statement
