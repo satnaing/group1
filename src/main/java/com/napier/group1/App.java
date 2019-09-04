@@ -161,7 +161,12 @@ public class App
                         "(2) All the cities in a continent organised by largest population to smallest. " + "\n" +
                         "(3) All the cities in a region organised by largest population to smallest. " + "\n" +
                         "(4) All the cities in a country organised by largest population to smallest. " + "\n" +
-                        "(5) All the cities in a district organised by largest population to smallest."
+                        "(5) All the cities in a district organised by largest population to smallest." + "\n" +
+                        "(6) The top N populated cities in the world." + "\n" +
+                        "(7) The top N populated cities in a continent." + "\n" +
+                        "(8) The top N populated cities in a region." + "\n" +
+                        "(9) The top N populated cities in a country." + "\n" +
+                        "(10) The top N populated cities in a district."
                 );
                 System.out.print("Enter an option : ");
                 int inputCityRpt = myObj.nextInt();  // Read user input
