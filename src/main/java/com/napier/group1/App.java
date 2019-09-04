@@ -173,27 +173,54 @@ public class App
 
                 if (inputCityRpt == 1)
                 {
-                    getCity();
+                    getCity(99999);
                     again = askQuestion();
                 }
                 else if (inputCityRpt == 2)
                 {
-                    getCitiesContinent(askContinent());
+                    getCitiesContinent(askContinent(), 99999);
                     again = askQuestion();
                 }
                 else if (inputCityRpt == 3)
                 {
-                    getCitiesRegion(askRegion());
+                    getCitiesRegion(askRegion(), 99999);
                     again = askQuestion();
                 }
                 else if (inputCityRpt == 4)
                 {
-                    getCitiesCountry(askCountry());
+                    getCitiesCountry(askCountry(), 99999);
                     again = askQuestion();
                 }
                 else if (inputCityRpt == 5)
                 {
-                    getCitiesDistrict();
+                    getCitiesDistrict(99999);
+                    again = askQuestion();
+                }
+                else if (inputCityRpt == 6)
+                {
+                    getCity(askTopNumber("City"));
+                    again = askQuestion();
+                }
+                else if (inputCityRpt == 7)
+                {
+
+                    getCitiesContinent(askContinent(), askTopNumber("City"));
+                    again = askQuestion();
+                }
+                else if (inputCityRpt == 8)
+                {
+                    getCitiesRegion(askRegion(), askTopNumber("City"));
+                    again = askQuestion();
+                }
+                else if (inputCityRpt == 9)
+                {
+                    getCitiesCountry(askCountry(), askTopNumber("City"));
+                    again = askQuestion();
+                }
+                else if (inputCityRpt == 10)
+                {
+
+                    getCitiesDistrict(askTopNumber("City"));
                     again = askQuestion();
                 }
                 else{
@@ -697,15 +724,26 @@ public class App
      * All the cities in the world
      * organised by largest population to smallest.
      */
-    public City getCity() {
+    public City getCity(int num) {
         City city=null;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
-            String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
-                    +"FROM city "
-                    +"INNER JOIN country ON country.Code=city.CountryCode "
-                    + "ORDER BY city.Population DESC";
+            String strSelect;
+            if (num == 99999)
+            {
+                strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Code=city.CountryCode "
+                        + "ORDER BY city.Population DESC";
+            }
+            else
+            {
+                strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Code=city.CountryCode "
+                        + "ORDER BY city.Population DESC LIMIT " + num;
+            }
             //Execute SQL statement
             ResultSet rset=stmt.executeQuery(strSelect);
             if (rset == null)
@@ -744,16 +782,28 @@ public class App
      * All the cities in a continent
      * organised by largest population to smallest.
      */
-    public City getCitiesContinent(String continent) {
+    public City getCitiesContinent(String continent, int num) {
         City city=null;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
-            String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
-                    +"FROM city "
-                    +"INNER JOIN country ON country.Code=city.CountryCode "
-                    +"WHERE country.Continent = " + "\"" + continent + "\""
-                    +" ORDER BY city.Population DESC";
+            String strSelect;
+            if (num == 99999)
+            {
+                strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Code=city.CountryCode "
+                        +"WHERE country.Continent = " + "\"" + continent + "\""
+                        +" ORDER BY city.Population DESC";
+            }
+            else
+            {
+                strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Code=city.CountryCode "
+                        +"WHERE country.Continent = " + "\"" + continent + "\""
+                        +" ORDER BY city.Population DESC LIMIT " + num;
+            }
             //Execute SQL statement
             ResultSet rset=stmt.executeQuery(strSelect);
             if (rset == null)
@@ -794,16 +844,28 @@ public class App
      * All the cities in a region
      * organised by largest population to smallest.
      */
-    public City getCitiesRegion(String region) {
+    public City getCitiesRegion(String region, int num) {
         City city=null;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
-            String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
-                    +"FROM city "
-                    +"INNER JOIN country ON country.Code=city.CountryCode "
-                    +"WHERE country.Region = " + "\"" + region + "\""
-                    +" ORDER BY city.Population DESC";
+            String strSelect;
+            if (num == 99999)
+            {
+                strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Code=city.CountryCode "
+                        +"WHERE country.Region = " + "\"" + region + "\""
+                        +" ORDER BY city.Population DESC";
+            }
+            else
+            {
+                strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Code=city.CountryCode "
+                        +"WHERE country.Region = " + "\"" + region + "\""
+                        +" ORDER BY city.Population DESC LIMIT " + num;
+            }
             //Execute SQL statement
             ResultSet rset=stmt.executeQuery(strSelect);
             if (rset == null)
@@ -844,7 +906,7 @@ public class App
      * All the cities in a district
      * organised by largest population to smallest.
      */
-    public City getCitiesDistrict() {
+    public City getCitiesDistrict(int num) {
         City city=null;
         try{
             Scanner myObj = new Scanner(System.in);  // Create a Scanner object
@@ -855,11 +917,23 @@ public class App
 
             //Create an SQL statement
             Statement stmt = con.createStatement();
-            String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
-                    +"FROM city "
-                    +"INNER JOIN country ON country.Code=city.CountryCode "
-                    +"WHERE city.District = " + "\"" + district + "\""
-                    +" ORDER BY city.Population DESC";
+            String strSelect;
+            if (num == 99999)
+            {
+                strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Code=city.CountryCode "
+                        +"WHERE city.District = " + "\"" + district + "\""
+                        +" ORDER BY city.Population DESC";
+            }
+            else
+            {
+                strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Code=city.CountryCode "
+                        +"WHERE city.District = " + "\"" + district + "\""
+                        +" ORDER BY city.Population DESC LIMIT " + num;
+            }
             //Execute SQL statement
             ResultSet rset=stmt.executeQuery(strSelect);
             if (rset == null)
@@ -900,16 +974,28 @@ public class App
      * All the cities in a district
      * organised by largest population to smallest.
      */
-    public City getCitiesCountry(String country) {
+    public City getCitiesCountry(String country, int num) {
         City city=null;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
-            String strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
-                    +"FROM city "
-                    +"INNER JOIN country ON country.Code=city.CountryCode "
-                    +"WHERE country.Name = " + "\"" + country + "\""
-                    +" ORDER BY city.Population DESC";
+            String strSelect;
+            if (num == 99999)
+            {
+                strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Code=city.CountryCode "
+                        +"WHERE country.Name = " + "\"" + country + "\""
+                        +" ORDER BY city.Population DESC";
+            }
+            else
+            {
+                strSelect = "SELECT city.Name, city.District, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Code=city.CountryCode "
+                        +"WHERE country.Name = " + "\"" + country + "\""
+                        +" ORDER BY city.Population DESC LIMIT " + num;
+            }
             //Execute SQL statement
             ResultSet rset=stmt.executeQuery(strSelect);
             if (rset == null)
