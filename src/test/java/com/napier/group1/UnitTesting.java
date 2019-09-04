@@ -85,21 +85,21 @@ public class UnitTesting {
         app.getSpecificCity(123);
     }
 
-    @Test
-    void testGetCity(){
-        app.getCity();
-    }
+//    @Test
+//    void testGetCity(){
+//        app.getCity();
+//    }
 
-    @Test
-    void testGetCitiesContinent(){
-        app.getCitiesContinent(null);
-    }
+//    @Test
+//    void testGetCitiesContinent(){
+//        app.getCitiesContinent(null);
+//    }
 
 
-    @Test
-    void testGetCitiesRegion(){
-        app.getCitiesRegion(null);
-    }
+//    @Test
+//    void testGetCitiesRegion(){
+//        app.getCitiesRegion(null);
+//    }
 
 
 //    @Test
@@ -114,22 +114,22 @@ public class UnitTesting {
 //    }
 
 
-    @Test
-    void testgetCapitalWorld(){
-        app.getCapitalWorld();
-    }
+//    @Test
+//    void testgetCapitalWorld(){
+//        app.getCapitalWorld();
+//    }
 //
 //
-    @Test
-    void testgetCapitalContinent(){
-        app.getCapitalContinent(null);
-    }
+//    @Test
+//    void testgetCapitalContinent(){
+//        app.getCapitalContinent(null);
+//    }
 //
 //
-    @Test
-    void testgetCapitalRegion(){
-        app.getCapitalRegion(null);
-    }
+//    @Test
+//    void testgetCapitalRegion(){
+//        app.getCapitalRegion(null);
+//    }
 //
 //
     @Test

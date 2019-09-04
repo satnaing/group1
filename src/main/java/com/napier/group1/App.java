@@ -236,24 +236,42 @@ public class App
                 System.out.println(
                         "(1) All the capital cities in the world organised by largest population to smallest. " + "\n" +
                         "(2) All the capital cities in a continent organised by largest population to smallest. " + "\n" +
-                        "(3) All the capital cities in a region organised by largest to smallest. "
+                        "(3) All the capital cities in a region organised by largest to smallest." + "\n" +
+                        "(4) The top N populated capital cities in the world." + "\n" +
+                        "(5) The top N populated capital cities in a continent." + "\n" +
+                        "(6) The top N populated capital cities in a region."
                 );
                 System.out.print("Enter an option : ");
                 int inputCapCityRpt = myObj.nextInt();  // Read user input
 
                 if (inputCapCityRpt == 1)
                 {
-                    getCapitalWorld();
+                    getCapitalWorld(99999);
                     again = askQuestion();
                 }
                 else if (inputCapCityRpt == 2)
                 {
-                    getCapitalContinent(askContinent());
+                    getCapitalContinent(askContinent(), 99999);
                     again = askQuestion();
                 }
                 else if (inputCapCityRpt == 3)
                 {
-                    getCapitalRegion(askRegion());
+                    getCapitalRegion(askRegion(), 99999);
+                    again = askQuestion();
+                }
+                else if (inputCapCityRpt == 4)
+                {
+                    getCapitalWorld(askTopNumber("Capital City"));
+                    again = askQuestion();
+                }
+                else if (inputCapCityRpt == 5)
+                {
+                    getCapitalContinent(askContinent(), askTopNumber("Capital City"));
+                    again = askQuestion();
+                }
+                else if (inputCapCityRpt == 6)
+                {
+                    getCapitalRegion(askRegion(), askTopNumber("Capital City"));
                     again = askQuestion();
                 }
                 else{
@@ -1036,15 +1054,26 @@ public class App
      * All the capital cities in the world
      * organised by largest population to smallest.
      */
-    public City getCapitalWorld() {
+    public City getCapitalWorld(int num) {
         City city=null;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
-            String strSelect = "SELECT city.Name, city.Population, country.Name "
-                    +"FROM city "
-                    +"INNER JOIN country ON country.Capital=city.ID "
-                    +" ORDER BY city.Population DESC";
+            String strSelect;
+            if (num == 99999)
+            {
+                strSelect = "SELECT city.Name, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Capital=city.ID "
+                        +" ORDER BY city.Population DESC";
+            }
+            else
+            {
+                strSelect = "SELECT city.Name, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Capital=city.ID "
+                        +" ORDER BY city.Population DESC LIMIT " + num;
+            }
             //Execute SQL statement
             ResultSet rset=stmt.executeQuery(strSelect);
             if (rset == null)
@@ -1083,16 +1112,28 @@ public class App
      * All the capital cities in the world
      * organised by largest population to smallest.
      */
-    public City getCapitalContinent(String continent) {
+    public City getCapitalContinent(String continent, int num) {
         City city=null;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
-            String strSelect = "SELECT city.Name, city.Population, country.Name "
-                    +"FROM city "
-                    +"INNER JOIN country ON country.Capital=city.ID "
-                    +"WHERE country.Continent = " + "\"" + continent + "\""
-                    +" ORDER BY city.Population DESC";
+            String strSelect;
+            if (num == 99999)
+            {
+                strSelect = "SELECT city.Name, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Capital=city.ID "
+                        +"WHERE country.Continent = " + "\"" + continent + "\""
+                        +" ORDER BY city.Population DESC";
+            }
+            else
+            {
+                strSelect = "SELECT city.Name, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Capital=city.ID "
+                        +"WHERE country.Continent = " + "\"" + continent + "\""
+                        +" ORDER BY city.Population DESC LIMIT " + num;
+            }
             //Execute SQL statement
             ResultSet rset=stmt.executeQuery(strSelect);
             if (rset == null)
@@ -1131,16 +1172,28 @@ public class App
      * All the capital cities in a region
      * organised by largest to smallest.
      */
-    public City getCapitalRegion(String region) {
+    public City getCapitalRegion(String region, int num) {
         City city=null;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
-            String strSelect = "SELECT city.Name, city.Population, country.Name "
-                    +"FROM city "
-                    +"INNER JOIN country ON country.Capital=city.ID "
-                    +"WHERE country.Region = " + "\"" + region + "\""
-                    +" ORDER BY city.Population DESC";
+            String strSelect;
+            if (num == 99999)
+            {
+                strSelect = "SELECT city.Name, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Capital=city.ID "
+                        +"WHERE country.Region = " + "\"" + region + "\""
+                        +" ORDER BY city.Population DESC";
+            }
+            else
+            {
+                strSelect = "SELECT city.Name, city.Population, country.Name "
+                        +"FROM city "
+                        +"INNER JOIN country ON country.Capital=city.ID "
+                        +"WHERE country.Region = " + "\"" + region + "\""
+                        +" ORDER BY city.Population DESC LIMIT " + num;
+            }
             //Execute SQL statement
             ResultSet rset=stmt.executeQuery(strSelect);
             if (rset == null)
