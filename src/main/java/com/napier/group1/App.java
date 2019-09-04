@@ -20,57 +20,60 @@ public class App
             a.connect(args[0]);
         }
 
+        //a.topNCountryWorld();
+        //a.askTopNumber("Country");
+
         // Input Display Method
         a.mainDisplay();
 
-        /*Country Report*/
-        //Display Top Populated countries in the world
-        a.getCountry();
-        Country c1=a.getCountry();
-        System.out.println(c1.getName()+"\t"+c1.getPopulation());
-        a.displayCountry(c1);
-
-        ArrayList<Country> c = a.getCountryInContinent("North America");
-        a.displayCountryContinent(c);
-
-        ArrayList<Country> countryInReg = a.getCountryInRegion("Southeast Asia");
-        a.displayCountryInRegion(countryInReg);
-
-        // test integration city
-        a.getSpecificCity(2710);
-        //System.out.println(trycty);
-
-        /*City Report*/
-        a.getCity();
-        a.getCitiesContinent("Asia");
-        a.getCitiesRegion("Southeast Asia");
-        a.getCitiesDistrict();
-        a.getCitiesCountry("Myanmar");
-
-
-        /*Capital City Report*/
-        a.getCapitalWorld();
-        a.getCapitalContinent("Asia");
-        a.getCapitalRegion("Southeast Asia");
-
-        /*Population Report*/
-        a.totalPopuRegion("Oceania");
-        System.out.println(a.totalPopuRegion("Southeast Asia"));
-        System.out.println(a.populationLivingInCitiesRegion("Southeast Asia"));
-
-
-        int total = a.totalPopuRegion("Southeast Asia");
-        int liveCities = a.populationLivingInCitiesRegion("Southeast Asia");
-        a.populationRgn(total, liveCities, "Southeast Asia");
-
-        String continent = "Asia";
-        double totalPopuCon = a.totalPopuContinent(continent);
-        double liveCitiesCon = a.populationLivingInCitiesContinent(continent);
-        a.populationContinent(totalPopuCon, liveCitiesCon, continent);
-
-        double totalPopuCountry = a.totalPopuCountry("Myanmar");
-        double liveCitiesCountry = a.populationLivingInCitiesCountry("Myanmar");
-        a.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar");
+//        /*Country Report*/
+//        //Display Top Populated countries in the world
+//        a.getCountry();
+//        Country c1=a.getCountry();
+//        System.out.println(c1.getName()+"\t"+c1.getPopulation());
+//        a.displayCountry(c1);
+//
+//        ArrayList<Country> c = a.getCountryInContinent("North America");
+//        a.displayCountryContinent(c);
+//
+//        ArrayList<Country> countryInReg = a.getCountryInRegion("Southeast Asia");
+//        a.displayCountryInRegion(countryInReg);
+//
+//        // test integration city
+//        a.getSpecificCity(2710);
+//        //System.out.println(trycty);
+//
+//        /*City Report*/
+//        a.getCity();
+//        a.getCitiesContinent("Asia");
+//        a.getCitiesRegion("Southeast Asia");
+//        a.getCitiesDistrict();
+//        a.getCitiesCountry("Myanmar");
+//
+//
+//        /*Capital City Report*/
+//        a.getCapitalWorld();
+//        a.getCapitalContinent("Asia");
+//        a.getCapitalRegion("Southeast Asia");
+//
+//        /*Population Report*/
+//        a.totalPopuRegion("Oceania");
+//        System.out.println(a.totalPopuRegion("Southeast Asia"));
+//        System.out.println(a.populationLivingInCitiesRegion("Southeast Asia"));
+//
+//
+//        int total = a.totalPopuRegion("Southeast Asia");
+//        int liveCities = a.populationLivingInCitiesRegion("Southeast Asia");
+//        a.populationRgn(total, liveCities, "Southeast Asia");
+//
+//        String continent = "Asia";
+//        double totalPopuCon = a.totalPopuContinent(continent);
+//        double liveCitiesCon = a.populationLivingInCitiesContinent(continent);
+//        a.populationContinent(totalPopuCon, liveCitiesCon, continent);
+//
+//        double totalPopuCountry = a.totalPopuCountry("Myanmar");
+//        double liveCitiesCountry = a.populationLivingInCitiesCountry("Myanmar");
+//        a.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar");
 
         // Disconnect from database
         a.disconnect();
@@ -103,24 +106,43 @@ public class App
                 System.out.println(
                         "(1) All the countries in the world organised by largest population to smallest." + "\n" +
                         "(2) All the countries in a continent organised by largest population to smallest." + "\n" +
-                        "(3) All the countries in a region organised by largest population to smallest."
+                        "(3) All the countries in a region organised by largest population to smallest." + "\n" +
+                        "(4) The top N populated countries in the world." + "\n" +
+                        "(5) The top N populated countries in a continent." + "\n" +
+                        "(6) The top N populated countries in a region."
                 );
                 System.out.print("Enter an option : ");
                 int inputCountryRpt = myObj.nextInt();  // Read user input
 
                 if (inputCountryRpt == 1)
                 {
-                    getCountry();
+                    getCountry(99999);
                     again = askQuestion();
                 }
                 else if (inputCountryRpt == 2)
                 {
-                    displayCountryContinent(getCountryInContinent(askContinent()));
+                    displayCountryContinent(getCountryInContinent(askContinent(), 99999));
                     again = askQuestion();
                 }
                 else if (inputCountryRpt == 3)
                 {
-                    displayCountryInRegion(getCountryInRegion(askRegion()));
+                    displayCountryInRegion(getCountryInRegion(askRegion(), 99999));
+                    again = askQuestion();
+                }
+                else if (inputCountryRpt == 4)
+                {
+//                    topNCountryWorld();
+                    getCountry(askTopNumber("Country"));
+                    again = askQuestion();
+                }
+                else if (inputCountryRpt == 5)
+                {
+                    displayCountryContinent(getCountryInContinent(askContinent(), askTopNumber("Country")));
+                    again = askQuestion();
+                }
+                else if (inputCountryRpt == 6)
+                {
+                    displayCountryInRegion(getCountryInRegion(askRegion(), askTopNumber("Country")));
                     again = askQuestion();
                 }
                 else
@@ -261,6 +283,61 @@ public class App
 
     }
 
+
+    /**
+     * Ask top number of country,
+     * city, capital cit for output
+     */
+    int askTopNumber(String str) {
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.print("Enter number of " + str + " : ");
+        int num = myObj.nextInt();
+        System.out.println("_________________________");
+        return num;
+    }
+
+//        try
+//        {
+//            Country ctry = null;
+//            // Create an SQL statement
+//            Statement stmt = con.createStatement();
+//            // Create string for SQL statement
+//            String strSelect =
+//                    "SELECT Code, Name, Continent, Region, Population, Capital "
+//                            + "FROM country "
+//                            + "ORDER BY Population DESC LIMIT "+ num;
+//            // Execute SQL statement
+//            ResultSet rset = stmt.executeQuery(strSelect);
+//            // Check one is returned
+//
+//            System.out.println("The top " + num + " populated countries in the world");
+//            while (rset.next()){
+//                ctry = new Country();
+//                ctry.setCode(rset.getString("Code"));
+//                ctry.setName(rset.getString("Name"));
+//                ctry.setContinent(rset.getString("Continent"));
+//                ctry.setRegion(rset.getString("Region"));
+//                ctry.setPopulation(rset.getInt("Population"));
+//                ctry.setCapital(rset.getString("Capital"));
+//                System.out.println(
+//                        "Code: " + ctry.getCode() + "\n" +
+//                                "Country:" + ctry.getName() + "\n" +
+//                                "Continent: " + ctry.getContinent() + "\n" +
+//                                "Region: " + ctry.getRegion() + "\n" +
+//                                "Population: " + ctry.getPopulation() + "\n" +
+//                                "Capital: " + ctry.getCapital());
+//                System.out.println("_____________________");
+//            }
+//            return ctry;
+//        }
+//        catch (Exception e)
+//        {
+//            System.out.println(e.getMessage());
+//            System.out.println("Failed to get country details");
+//            return null;
+//        }
+//    }
+
     public String askContinent()
     {
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
@@ -322,7 +399,7 @@ public class App
      * All the countries in the world
      * organised by largest population to smallest.
      */
-    public Country getCountry()
+    public Country getCountry(int num)
     {
         try
         {
@@ -330,10 +407,19 @@ public class App
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country "
-                            + "ORDER BY Population DESC";
+            String strSelect;
+            if (num == 99999){
+                strSelect =
+                        "SELECT Code, Name, Continent, Region, Population, Capital "
+                                + "FROM country "
+                                + "ORDER BY Population DESC";
+            }
+            else{
+                strSelect =
+                        "SELECT Code, Name, Continent, Region, Population, Capital "
+                                + "FROM country "
+                                + "ORDER BY Population DESC LIMIT "+ num;
+            }
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Check one is returned
@@ -389,7 +475,7 @@ public class App
      * All the countries in a continent
      * organised by largest population to smallest.
      */
-    public ArrayList<Country> getCountryInContinent(String continent)
+    public ArrayList<Country> getCountryInContinent(String continent, int num)
     {
         ArrayList<Country> countries=null;
         try
@@ -397,10 +483,21 @@ public class App
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create Asia string for SQL statement
-            String strCont =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country WHERE continent = " + "\"" + continent + "\"" +
-            " ORDER BY Population DESC";
+            String strCont;
+            if (num == 99999)
+            {
+                strCont =
+                        "SELECT Code, Name, Continent, Region, Population, Capital "
+                                + "FROM country WHERE continent = " + "\"" + continent + "\"" +
+                                " ORDER BY Population DESC";
+            }
+            else
+            {
+                strCont =
+                        "SELECT Code, Name, Continent, Region, Population, Capital "
+                                + "FROM country WHERE continent = " + "\"" + continent + "\"" +
+                                " ORDER BY Population DESC LIMIT " + num;
+            }
             // Execute SQL statement
             ResultSet rsetStr = stmt.executeQuery(strCont);
 
@@ -462,7 +559,7 @@ public class App
      * All the countries in a region
      * organised by largest population to smallest.
      */
-    public ArrayList<Country> getCountryInRegion(String region)
+    public ArrayList<Country> getCountryInRegion(String region, int num)
     {
         ArrayList<Country> countries=null;
         try
@@ -470,10 +567,21 @@ public class App
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create Asia string for SQL statement
-            String strCont =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country WHERE Region = " + "\"" + region + "\""
-                            + " ORDER BY Population DESC";
+            String strCont;
+            if (num == 99999)
+            {
+                strCont =
+                        "SELECT Code, Name, Continent, Region, Population, Capital "
+                                + "FROM country WHERE Region = " + "\"" + region + "\""
+                                + " ORDER BY Population DESC";
+            }
+            else
+            {
+                strCont =
+                        "SELECT Code, Name, Continent, Region, Population, Capital "
+                                + "FROM country WHERE Region = " + "\"" + region + "\""
+                                + " ORDER BY Population DESC LIMIT " + num;
+            }
 
             // Execute SQL statement
             ResultSet rsetStr = stmt.executeQuery(strCont);
