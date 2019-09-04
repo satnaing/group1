@@ -42,11 +42,11 @@ public class UnitTesting {
 //        app.askCountry();
 //    }
 
-    @Test
-    void testGetCountry()
-    {
-        Country c1 = app.getCountry();
-    }
+//    @Test
+//    void testGetCountry()
+//    {
+//        Country c1 = app.getCountry(99999);
+//    }
 
     @Test
     void displayCountry()
@@ -67,11 +67,11 @@ public class UnitTesting {
         app.displayCountryContinent(c);
     }
 
-    @Test
-    void testGetCountryInRegion()
-    {
-        app.getCountryInRegion(null);
-    }
+//    @Test
+//    void testGetCountryInRegion()
+//    {
+//        app.getCountryInRegion(null, 99999);
+//    }
 
     @Test
     void testDisplayCountryInRegion()
