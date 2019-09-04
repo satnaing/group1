@@ -554,7 +554,7 @@ public class App
      * All the countries in the world
      * organised by largest population to smallest.
      */
-    public Country getCountry(int num)
+    public void getCountry(int num)
     {
         try
         {
@@ -597,13 +597,11 @@ public class App
                         "Capital: " + ctry.getCapital());
                 System.out.println("_____________________");
             }
-            return ctry;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
-            return null;
         }
     }
 
@@ -612,7 +610,6 @@ public class App
     {
         if (c == null){
             System.out.println("No Country");
-            return;
         }
         else {
             System.out.println(c.getCode());
@@ -800,8 +797,8 @@ public class App
     /**
      * Get Specific City
      */
-    public City getSpecificCity(int id) {
-        City city=null;
+    public void getSpecificCity(int id) {
+        City city;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
@@ -839,7 +836,6 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get one city!");
         }
-        return city;
     }
 
 
@@ -847,8 +843,8 @@ public class App
      * All the cities in the world
      * organised by largest population to smallest.
      */
-    public City getCity(int num) {
-        City city=null;
+    public void getCity(int num) {
+        City city;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
@@ -897,7 +893,6 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get one city!");
         }
-        return city;
     }
 
 
@@ -905,8 +900,8 @@ public class App
      * All the cities in a continent
      * organised by largest population to smallest.
      */
-    public City getCitiesContinent(String continent, int num) {
-        City city=null;
+    public void getCitiesContinent(String continent, int num) {
+        City city;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
@@ -959,7 +954,6 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get one city!");
         }
-        return city;
     }
 
 
@@ -967,8 +961,8 @@ public class App
      * All the cities in a region
      * organised by largest population to smallest.
      */
-    public City getCitiesRegion(String region, int num) {
-        City city=null;
+    public void getCitiesRegion(String region, int num) {
+        City city;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1021,7 +1015,6 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get one city!");
         }
-        return city;
     }
 
 
@@ -1029,8 +1022,8 @@ public class App
      * All the cities in a district
      * organised by largest population to smallest.
      */
-    public City getCitiesDistrict(int num) {
-        City city=null;
+    public void getCitiesDistrict(int num) {
+        City city;
         try{
             Scanner myObj = new Scanner(System.in);  // Create a Scanner object
             System.out.print(
@@ -1089,7 +1082,6 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get one city!");
         }
-        return city;
     }
 
 
@@ -1097,8 +1089,8 @@ public class App
      * All the cities in a district
      * organised by largest population to smallest.
      */
-    public City getCitiesCountry(String country, int num) {
-        City city=null;
+    public void getCitiesCountry(String country, int num) {
+        City city;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1151,7 +1143,6 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get one city!");
         }
-        return city;
     }
 
 
@@ -1159,8 +1150,8 @@ public class App
      * All the capital cities in the world
      * organised by largest population to smallest.
      */
-    public City getCapitalWorld(int num) {
-        City city=null;
+    public void getCapitalWorld(int num) {
+        City city;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1209,7 +1200,6 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get one city!");
         }
-        return city;
     }
 
 
@@ -1217,8 +1207,8 @@ public class App
      * All the capital cities in the world
      * organised by largest population to smallest.
      */
-    public City getCapitalContinent(String continent, int num) {
-        City city=null;
+    public void getCapitalContinent(String continent, int num) {
+        City city;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1269,7 +1259,6 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get one city!");
         }
-        return city;
     }
 
 
@@ -1277,8 +1266,8 @@ public class App
      * All the capital cities in a region
      * organised by largest to smallest.
      */
-    public City getCapitalRegion(String region, int num) {
-        City city=null;
+    public void getCapitalRegion(String region, int num) {
+        City city;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1329,7 +1318,6 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get one city!");
         }
-        return city;
     }
 
 
@@ -1337,7 +1325,7 @@ public class App
      * Total population in a specific region
      */
     public int totalPopuRegion(String region) {
-        Country cont=null;
+        Country cont;
         int totalPopulation = 0;
         try{
             //Create an SQL statement
@@ -1375,7 +1363,7 @@ public class App
      * Total population in a specific region
      */
     public int populationLivingInCitiesRegion(String region) {
-        Country cont=null;
+        Country cont;
         int totalPopulation = 0;
         try{
             //Create an SQL statement
