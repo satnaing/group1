@@ -20,11 +20,13 @@ public class App
             a.connect(args[0]);
         }
 
-        //a.topNCountryWorld();
-        //a.askTopNumber("Country");
-
         // Input Display Method
         a.mainDisplay();
+
+        // CountryLanguage
+        //a.CountryLanguage();
+
+        //a.totalWorldPop();
 
 //        /*Country Report*/
 //        //Display Top Populated countries in the world
@@ -90,247 +92,350 @@ public class App
             System.out.println("Choose any of the following report type:");
             System.out.println(
                     "(1) Country Report. " + "\n" +
-                            "(2) City Report. " + "\n" +
-                            "(3) Capital City Report. " + "\n" +
-                            "(4) Population Report."
+                    "(2) City Report. " + "\n" +
+                    "(3) Capital City Report. " + "\n" +
+                    "(4) Population Report." + "\n" +
+                    "(5) Language Report."
             );
             System.out.print("Enter an option : ");
             int rptOption = myObj.nextInt();  // Read user input
             System.out.println("_________________________");
 
             // Country Report
-            if (rptOption == 1)
-            {
-                System.out.println("Country Report");
-                System.out.println("-----------------------");
-                System.out.println(
-                        "(1) All the countries in the world organised by largest population to smallest." + "\n" +
-                        "(2) All the countries in a continent organised by largest population to smallest." + "\n" +
-                        "(3) All the countries in a region organised by largest population to smallest." + "\n" +
-                        "(4) The top N populated countries in the world." + "\n" +
-                        "(5) The top N populated countries in a continent." + "\n" +
-                        "(6) The top N populated countries in a region."
-                );
-                System.out.print("Enter an option : ");
-                int inputCountryRpt = myObj.nextInt();  // Read user input
+            switch (rptOption) {
+                case 1:
+                    System.out.println("Country Report");
+                    System.out.println("-----------------------");
+                    System.out.println(
+                            "(1) All the countries in the world organised by largest population to smallest." + "\n" +
+                                    "(2) All the countries in a continent organised by largest population to smallest." + "\n" +
+                                    "(3) All the countries in a region organised by largest population to smallest." + "\n" +
+                                    "(4) The top N populated countries in the world." + "\n" +
+                                    "(5) The top N populated countries in a continent." + "\n" +
+                                    "(6) The top N populated countries in a region."
+                    );
+                    System.out.print("Enter an option : ");
+                    int inputCountryRpt = myObj.nextInt();  // Read user input
 
-                if (inputCountryRpt == 1)
-                {
-                    getCountry(99999);
-                    again = askQuestion();
-                }
-                else if (inputCountryRpt == 2)
-                {
-                    displayCountryContinent(getCountryInContinent(askContinent(), 99999));
-                    again = askQuestion();
-                }
-                else if (inputCountryRpt == 3)
-                {
-                    displayCountryInRegion(getCountryInRegion(askRegion(), 99999));
-                    again = askQuestion();
-                }
-                else if (inputCountryRpt == 4)
-                {
+
+                    switch (inputCountryRpt) {
+                        case 1:
+                            getCountry(99999);
+                            again = askQuestion();
+                            break;
+                        case 2:
+                            displayCountryContinent(getCountryInContinent(askContinent(), 99999));
+                            again = askQuestion();
+                            break;
+                        case 3:
+                            displayCountryInRegion(getCountryInRegion(askRegion(), 99999));
+                            again = askQuestion();
+                            break;
+                        case 4:
 //                    topNCountryWorld();
-                    getCountry(askTopNumber("Country"));
-                    again = askQuestion();
-                }
-                else if (inputCountryRpt == 5)
-                {
-                    displayCountryContinent(getCountryInContinent(askContinent(), askTopNumber("Country")));
-                    again = askQuestion();
-                }
-                else if (inputCountryRpt == 6)
-                {
-                    displayCountryInRegion(getCountryInRegion(askRegion(), askTopNumber("Country")));
-                    again = askQuestion();
-                }
-                else
-                {
-                    again = true;
-                }
-            }
+                            getCountry(askTopNumber("Country"));
+                            again = askQuestion();
+                            break;
+                        case 5:
+                            displayCountryContinent(getCountryInContinent(askContinent(), askTopNumber("Country")));
+                            again = askQuestion();
+                            break;
+                        case 6:
+                            displayCountryInRegion(getCountryInRegion(askRegion(), askTopNumber("Country")));
+                            again = askQuestion();
+                            break;
+                        default:
+                            again = true;
+                            break;
+                    }
+                    break;
 
-            // City Report
-            else if(rptOption == 2)
-            {
-                System.out.println("City Report");
-                System.out.println("-----------------------");
-                System.out.println(
-                        "(1) All the cities in the world organised by largest population to smallest. " + "\n" +
-                        "(2) All the cities in a continent organised by largest population to smallest. " + "\n" +
-                        "(3) All the cities in a region organised by largest population to smallest. " + "\n" +
-                        "(4) All the cities in a country organised by largest population to smallest. " + "\n" +
-                        "(5) All the cities in a district organised by largest population to smallest." + "\n" +
-                        "(6) The top N populated cities in the world." + "\n" +
-                        "(7) The top N populated cities in a continent." + "\n" +
-                        "(8) The top N populated cities in a region." + "\n" +
-                        "(9) The top N populated cities in a country." + "\n" +
-                        "(10) The top N populated cities in a district."
-                );
-                System.out.print("Enter an option : ");
-                int inputCityRpt = myObj.nextInt();  // Read user input
+                // City Report
+                case 2:
+                    System.out.println("City Report");
+                    System.out.println("-----------------------");
+                    System.out.println(
+                            "(1) All the cities in the world organised by largest population to smallest. " + "\n" +
+                                    "(2) All the cities in a continent organised by largest population to smallest. " + "\n" +
+                                    "(3) All the cities in a region organised by largest population to smallest. " + "\n" +
+                                    "(4) All the cities in a country organised by largest population to smallest. " + "\n" +
+                                    "(5) All the cities in a district organised by largest population to smallest." + "\n" +
+                                    "(6) The top N populated cities in the world." + "\n" +
+                                    "(7) The top N populated cities in a continent." + "\n" +
+                                    "(8) The top N populated cities in a region." + "\n" +
+                                    "(9) The top N populated cities in a country." + "\n" +
+                                    "(10) The top N populated cities in a district."
+                    );
+                    System.out.print("Enter an option : ");
+                    int inputCityRpt = myObj.nextInt();  // Read user input
 
-                if (inputCityRpt == 1)
-                {
-                    getCity(99999);
-                    again = askQuestion();
-                }
-                else if (inputCityRpt == 2)
-                {
-                    getCitiesContinent(askContinent(), 99999);
-                    again = askQuestion();
-                }
-                else if (inputCityRpt == 3)
-                {
-                    getCitiesRegion(askRegion(), 99999);
-                    again = askQuestion();
-                }
-                else if (inputCityRpt == 4)
-                {
-                    getCitiesCountry(askCountry(), 99999);
-                    again = askQuestion();
-                }
-                else if (inputCityRpt == 5)
-                {
-                    getCitiesDistrict(99999);
-                    again = askQuestion();
-                }
-                else if (inputCityRpt == 6)
-                {
-                    getCity(askTopNumber("City"));
-                    again = askQuestion();
-                }
-                else if (inputCityRpt == 7)
-                {
 
-                    getCitiesContinent(askContinent(), askTopNumber("City"));
-                    again = askQuestion();
-                }
-                else if (inputCityRpt == 8)
-                {
-                    getCitiesRegion(askRegion(), askTopNumber("City"));
-                    again = askQuestion();
-                }
-                else if (inputCityRpt == 9)
-                {
-                    getCitiesCountry(askCountry(), askTopNumber("City"));
-                    again = askQuestion();
-                }
-                else if (inputCityRpt == 10)
-                {
+                    switch (inputCityRpt) {
+                        case 1:
+                            getCity(99999);
+                            again = askQuestion();
+                            break;
+                        case 2:
+                            getCitiesContinent(askContinent(), 99999);
+                            again = askQuestion();
+                            break;
+                        case 3:
+                            getCitiesRegion(askRegion(), 99999);
+                            again = askQuestion();
+                            break;
+                        case 4:
+                            getCitiesCountry(askCountry(), 99999);
+                            again = askQuestion();
+                            break;
+                        case 5:
+                            getCitiesDistrict(99999);
+                            again = askQuestion();
+                            break;
+                        case 6:
+                            getCity(askTopNumber("City"));
+                            again = askQuestion();
+                            break;
+                        case 7:
 
-                    getCitiesDistrict(askTopNumber("City"));
-                    again = askQuestion();
-                }
-                else{
-                    again = true;
-                }
-            }
+                            getCitiesContinent(askContinent(), askTopNumber("City"));
+                            again = askQuestion();
+                            break;
+                        case 8:
+                            getCitiesRegion(askRegion(), askTopNumber("City"));
+                            again = askQuestion();
+                            break;
+                        case 9:
+                            getCitiesCountry(askCountry(), askTopNumber("City"));
+                            again = askQuestion();
+                            break;
+                        case 10:
 
-            // Capital City Report
-            else if (rptOption == 3)
-            {
-                System.out.println("Capital City Report");
-                System.out.println("-----------------------");
-                System.out.println(
-                        "(1) All the capital cities in the world organised by largest population to smallest. " + "\n" +
-                        "(2) All the capital cities in a continent organised by largest population to smallest. " + "\n" +
-                        "(3) All the capital cities in a region organised by largest to smallest." + "\n" +
-                        "(4) The top N populated capital cities in the world." + "\n" +
-                        "(5) The top N populated capital cities in a continent." + "\n" +
-                        "(6) The top N populated capital cities in a region."
-                );
-                System.out.print("Enter an option : ");
-                int inputCapCityRpt = myObj.nextInt();  // Read user input
+                            getCitiesDistrict(askTopNumber("City"));
+                            again = askQuestion();
+                            break;
+                        default:
+                            again = true;
+                            break;
+                    }
+                    break;
 
-                if (inputCapCityRpt == 1)
-                {
-                    getCapitalWorld(99999);
-                    again = askQuestion();
-                }
-                else if (inputCapCityRpt == 2)
-                {
-                    getCapitalContinent(askContinent(), 99999);
-                    again = askQuestion();
-                }
-                else if (inputCapCityRpt == 3)
-                {
-                    getCapitalRegion(askRegion(), 99999);
-                    again = askQuestion();
-                }
-                else if (inputCapCityRpt == 4)
-                {
-                    getCapitalWorld(askTopNumber("Capital City"));
-                    again = askQuestion();
-                }
-                else if (inputCapCityRpt == 5)
-                {
-                    getCapitalContinent(askContinent(), askTopNumber("Capital City"));
-                    again = askQuestion();
-                }
-                else if (inputCapCityRpt == 6)
-                {
-                    getCapitalRegion(askRegion(), askTopNumber("Capital City"));
-                    again = askQuestion();
-                }
-                else{
-                    again = true;
-                }
-            }
+                // Capital City Report
+                case 3:
+                    System.out.println("Capital City Report");
+                    System.out.println("-----------------------");
+                    System.out.println(
+                            "(1) All the capital cities in the world organised by largest population to smallest. " + "\n" +
+                                    "(2) All the capital cities in a continent organised by largest population to smallest. " + "\n" +
+                                    "(3) All the capital cities in a region organised by largest to smallest." + "\n" +
+                                    "(4) The top N populated capital cities in the world." + "\n" +
+                                    "(5) The top N populated capital cities in a continent." + "\n" +
+                                    "(6) The top N populated capital cities in a region."
+                    );
+                    System.out.print("Enter an option : ");
+                    int inputCapCityRpt = myObj.nextInt();  // Read user input
 
-            // Population Report
-            else if (rptOption == 4)
-            {
-                System.out.println("Population Report");
-                System.out.println("-----------------------");
-                System.out.println(
-                    "(1) The population of people, people living in cities, and people not living in cities in each continent." + "\n" +
-                    "(2) The population of people, people living in cities, and people not living in cities in each region." + "\n" +
-                    "(3) The population of people, people living in cities, and people not living in cities in each country."
-                );
-                System.out.print("Enter an option : ");
-                int inputPopRpt = myObj.nextInt();  // Read user input
 
-                if (inputPopRpt == 1)
-                {
-                    String continent = askContinent();
-                    double totalPopuCon = totalPopuContinent(continent);
-                    double liveCitiesCon = populationLivingInCitiesContinent(continent);
-                    populationContinent(totalPopuCon, liveCitiesCon, continent);
-                    again = askQuestion();
-                }
-                else if (inputPopRpt == 2)
-                {
-                    String region = askRegion();
-                    int total = totalPopuRegion(region);
-                    int liveCities = populationLivingInCitiesRegion(region);
-                    populationRgn(total, liveCities, region);
-                    again = askQuestion();
-                }
-                else if (inputPopRpt == 3)
-                {
-                    String country = askCountry();
-                    double totalPopuCountry = totalPopuCountry(country);
-                    double liveCitiesCountry = populationLivingInCitiesCountry(country);
-                    populationCountry(totalPopuCountry, liveCitiesCountry, country);
-                    again = askQuestion();
+                    switch (inputCapCityRpt) {
+                        case 1:
+                            getCapitalWorld(99999);
+                            again = askQuestion();
+                            break;
+                        case 2:
+                            getCapitalContinent(askContinent(), 99999);
+                            again = askQuestion();
+                            break;
+                        case 3:
+                            getCapitalRegion(askRegion(), 99999);
+                            again = askQuestion();
+                            break;
+                        case 4:
+                            getCapitalWorld(askTopNumber("Capital City"));
+                            again = askQuestion();
+                            break;
+                        case 5:
+                            getCapitalContinent(askContinent(), askTopNumber("Capital City"));
+                            again = askQuestion();
+                            break;
+                        case 6:
+                            getCapitalRegion(askRegion(), askTopNumber("Capital City"));
+                            again = askQuestion();
+                            break;
+                        default:
+                            again = true;
+                            break;
+                    }
+                    break;
 
-                    //double totalPopuCountry = a.totalPopuCountry("Myanmar");
-                    ////        double liveCitiesCountry = a.populationLivingInCitiesCountry("Myanmar");
-                    ////        a.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar");
-                }
-                else{
-                    again = true;
-                }
-            }
-            else
-            {
-                System.out.println("Wrong Choice!");  // Output user input
+                // Population Report
+                case 4:
+                    System.out.println("Population Report");
+                    System.out.println("-----------------------");
+                    System.out.println(
+                            "(1) The population of people, people living in cities, and people not living in cities in each continent." + "\n" +
+                                    "(2) The population of people, people living in cities, and people not living in cities in each region." + "\n" +
+                                    "(3) The population of people, people living in cities, and people not living in cities in each country."
+                    );
+                    System.out.print("Enter an option : ");
+                    int inputPopRpt = myObj.nextInt();  // Read user input
+
+
+                    switch (inputPopRpt) {
+                        case 1:
+                            String continent = askContinent();
+                            double totalPopuCon = totalPopuContinent(continent);
+                            double liveCitiesCon = populationLivingInCitiesContinent(continent);
+                            populationContinent(totalPopuCon, liveCitiesCon, continent);
+                            again = askQuestion();
+                            break;
+                        case 2:
+                            String region = askRegion();
+                            int total = totalPopuRegion(region);
+                            int liveCities = populationLivingInCitiesRegion(region);
+                            populationRgn(total, liveCities, region);
+                            again = askQuestion();
+                            break;
+                        case 3:
+                            String country = askCountry();
+                            double totalPopuCountry = totalPopuCountry(country);
+                            double liveCitiesCountry = populationLivingInCitiesCountry(country);
+                            populationCountry(totalPopuCountry, liveCitiesCountry, country);
+                            again = askQuestion();
+
+                            //double totalPopuCountry = a.totalPopuCountry("Myanmar");
+                            ////        double liveCitiesCountry = a.populationLivingInCitiesCountry("Myanmar");
+                            ////        a.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar");
+                            break;
+                        default:
+                            again = true;
+                            break;
+                    }
+                    break;
+                case 5:
+                    countryLanguage();
+                    again = askQuestion();
+                    break;
+                default:
+                    System.out.println("Wrong Choice!");  // Output user input
+
+                    break;
             }
         }
-        while (again == true);
+        while (again);
 
+    }
+
+
+    public float totalWorldPop()
+    {
+        try
+        {
+            Country ctry;
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT Population FROM country ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Check one is returned
+
+            float x = 0;
+            while (rset.next()){
+                ctry = new Country();
+                ctry.setPopulation(rset.getInt("Population"));
+                x += ctry.getPopulation();
+            }
+            System.out.println("Total Population : " + x);
+            return x;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return 0;
+        }
+    }
+
+    private CountryLanguage countryLanguage() {
+        try
+        {
+            CountryLanguage ctl = null;
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT countrylanguage.Language, countrylanguage.Percentage, country.Population "
+                    +"FROM countrylanguage "
+                    +"INNER JOIN country ON country.Code = countrylanguage.CountryCode";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Check one is returned
+
+            System.out.println("Language Report");
+            System.out.println("------------------------");
+            float popEng = 0;
+            float popChina = 0;
+            float popHindi = 0;
+            float popSpanish = 0;
+            float popArabic = 0;
+            float popOther = 0;
+            while (rset.next()){
+                ctl = new CountryLanguage();
+                ctl.setLanguage(rset.getString("countrylanguage.Language"));
+                ctl.setPercentage(rset.getFloat("countrylanguage.Percentage"));
+                ctl.setPopulation(rset.getInt("country.Population"));
+
+                String lan;
+                float per, pop;
+
+                lan = ctl.getLanguage();
+                per = ctl.getPercentage();
+                pop = ctl.getPopulation();
+
+                switch (lan) {
+                    case "English":
+                        popEng += per * pop / 100;
+                        break;
+                    case "Chinese":
+                        popChina += per * pop / 100;
+                        break;
+                    case "Hindi":
+                        popHindi += per * pop / 100;
+                        break;
+                    case "Spanish":
+                        popSpanish += per * pop / 100;
+                        break;
+                    case "Arabic":
+                        popArabic += per * pop / 100;
+                        break;
+                    default:
+                        popOther += per * pop / 100;
+                        break;
+                }
+            }
+            float popTotal = totalWorldPop();
+            float perEng, perChina, perHindi, perSpanish, perArabic, perOther;
+            perEng = popEng/popTotal*100;
+            perChina = popChina/popTotal*100;
+            perHindi = popHindi/popTotal*100;
+            perSpanish = popSpanish/popTotal*100;
+            perArabic = popArabic/popTotal*100;
+            perOther = popOther/popTotal*100;
+            System.out.println(
+                    "Chinese : " + popChina + String.format("%s%.2f%s"," (", perChina,"%) ") + "\n" +
+                    "Hindi : " + popHindi + String.format("%s%.2f%s"," (", perHindi,"%) ")  + "\n" +
+                    "Spanish : " + popSpanish + String.format("%s%.2f%s"," (", perSpanish,"%) ")  + "\n" +
+                    "English : " + popEng + String.format("%s%.2f%s"," (", perEng,"%) ") + "\n" +
+                    "Arabic : " + popArabic + String.format("%s%.2f%s"," (", perArabic,"%) ")  + "\n" +
+                    "Other : " + popOther + String.format("%s%.2f%s"," (", perOther,"%) ")  + "\n" +
+                    "_________________________"
+            );
+            return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
     }
 
 
@@ -1323,9 +1428,7 @@ public class App
         double perNotLiveCities;
         notLiveCities = total - liveCities;
         //per = (liveCities*100)/total;
-        double dtotal = total;
-        double dliveCities = liveCities;
-        perLiveCities = dliveCities/dtotal*100;
+        perLiveCities = (double) liveCities / (double) total *100;
         perNotLiveCities = 100 - perLiveCities;
         System.out.println("Population Report in "+ region + " Region");
         System.out.println("-----------------------------------------");
@@ -1342,7 +1445,7 @@ public class App
      * Total population in a specific continent
      */
     public double totalPopuContinent(String continent) {
-        Country cont=null;
+        Country cont;
         double totalPopulation = 0;
         try{
             //Create an SQL statement
@@ -1381,7 +1484,7 @@ public class App
      * Total population living in cities in a specific continent
      */
     public double populationLivingInCitiesContinent(String continent) {
-        Country cont=null;
+        Country cont;
         double totalPopulation = 0;
         try{
             //Create an SQL statement
@@ -1450,7 +1553,7 @@ public class App
      * Total population in a specific country
      */
     public double totalPopuCountry(String country) {
-        Country cont=null;
+        Country cont;
         double totalPopulation = 0;
         try{
             //Create an SQL statement
@@ -1589,7 +1692,7 @@ public class App
             }
             catch (SQLException sqle)
             {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
