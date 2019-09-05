@@ -21,7 +21,7 @@ public class App
         }
 
         // Input Display Method
-        //a.mainDisplay();
+        a.mainDisplay();
 
         // CountryLanguage
         //a.CountryLanguage();
@@ -796,9 +796,10 @@ public class App
 
     /**
      * Get Specific City
+     * @return
      */
-    public void getSpecificCity(int id) {
-        City city;
+    public City getSpecificCity(int id) {
+        City city = null;
         try{
             //Create an SQL statement
             Statement stmt = con.createStatement();
@@ -836,6 +837,7 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get one city!");
         }
+        return city;
     }
 
 
