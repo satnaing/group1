@@ -16,6 +16,20 @@ public class UnitTesting {
     static void init()
     {
         app = new App();
+        app.connect("localhost:33060");
+    }
+
+    @Test
+    void testCountryInReg()
+    {
+        ArrayList<Country> countryInReg = app.getCountryInRegion("Southeast Asia", 99999);
+        app.displayCountryInRegion(countryInReg);
+    }
+
+    @Test
+    void testTotalWorldPop()
+    {
+        app.totalWorldPop();
     }
 
 //    @Test
