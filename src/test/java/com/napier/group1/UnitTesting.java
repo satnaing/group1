@@ -32,6 +32,73 @@ public class UnitTesting {
         app.totalWorldPop();
     }
 
+
+    @Test
+    void testCountryLanguage()
+    {
+        app.countryLanguage();
+    }
+
+
+    @Test
+    void testGetCountry()
+    {
+        app.getCountry(99999);
+    }
+
+
+    @Test
+    void testDisplayCountry()
+    {
+        Country c1=app.getCountry(99999);
+        app.displayCountry(c1);
+    }
+
+
+    @Test
+    void testGetCountryInContinent()
+    {
+        app.getCountryInContinent("Asia", 99999);
+    }
+
+
+    @Test
+    void testDisplayCountryInContinent()
+    {
+        ArrayList<Country> c = app.getCountryInContinent("Europe", 99999);
+        app.displayCountryContinent(c);
+    }
+
+
+    @Test
+    void testGetCitiesCountry()
+    {
+        app.getCitiesCountry("Myanmar", 99999);
+    }
+
+
+    @Test
+    void testTotalPopuRegion()
+    {
+        app.totalPopuRegion("Southeast Asia");
+    }
+
+
+    @Test
+    void testTotalPopuContinent()
+    {
+        app.totalPopuContinent("Asia");
+    }
+
+
+    @Test
+    void testTotalPopuCountry()
+    {
+        app.totalPopuCountry("Myanmar");
+    }
+
+
+
 //    @Test
 //    void testMainDisplay()
 //    {

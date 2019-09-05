@@ -354,7 +354,7 @@ public class App
         }
     }
 
-    private CountryLanguage countryLanguage() {
+    public CountryLanguage countryLanguage() {
         try
         {
             CountryLanguage ctl = null;
@@ -450,47 +450,6 @@ public class App
         return num;
     }
 
-//        try
-//        {
-//            Country ctry = null;
-//            // Create an SQL statement
-//            Statement stmt = con.createStatement();
-//            // Create string for SQL statement
-//            String strSelect =
-//                    "SELECT Code, Name, Continent, Region, Population, Capital "
-//                            + "FROM country "
-//                            + "ORDER BY Population DESC LIMIT "+ num;
-//            // Execute SQL statement
-//            ResultSet rset = stmt.executeQuery(strSelect);
-//            // Check one is returned
-//
-//            System.out.println("The top " + num + " populated countries in the world");
-//            while (rset.next()){
-//                ctry = new Country();
-//                ctry.setCode(rset.getString("Code"));
-//                ctry.setName(rset.getString("Name"));
-//                ctry.setContinent(rset.getString("Continent"));
-//                ctry.setRegion(rset.getString("Region"));
-//                ctry.setPopulation(rset.getInt("Population"));
-//                ctry.setCapital(rset.getString("Capital"));
-//                System.out.println(
-//                        "Code: " + ctry.getCode() + "\n" +
-//                                "Country:" + ctry.getName() + "\n" +
-//                                "Continent: " + ctry.getContinent() + "\n" +
-//                                "Region: " + ctry.getRegion() + "\n" +
-//                                "Population: " + ctry.getPopulation() + "\n" +
-//                                "Capital: " + ctry.getCapital());
-//                System.out.println("_____________________");
-//            }
-//            return ctry;
-//        }
-//        catch (Exception e)
-//        {
-//            System.out.println(e.getMessage());
-//            System.out.println("Failed to get country details");
-//            return null;
-//        }
-//    }
 
     public String askContinent()
     {
@@ -552,8 +511,9 @@ public class App
     /**
      * All the countries in the world
      * organised by largest population to smallest.
+     * @return
      */
-    public void getCountry(int num)
+    public Country getCountry(int num)
     {
         try
         {
@@ -602,6 +562,7 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
         }
+        return null;
     }
 
 
