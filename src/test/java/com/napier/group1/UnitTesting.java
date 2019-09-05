@@ -1,13 +1,10 @@
 package com.napier.group1;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class UnitTesting {
     static App app;
@@ -43,21 +40,23 @@ public class UnitTesting {
     @Test
     void testGetCountry()
     {
+        app.getCountry(3);
         app.getCountry(99999);
     }
 
 
-    @Test
-    void testDisplayCountry()
-    {
-        Country c1=app.getCountry(99999);
-        app.displayCountry(c1);
-    }
+//    @Test
+//    void testDisplayCountry()
+//    {
+//        Country c1=app.getCountry(5);
+//        app.displayCountry(c1);
+//    }
 
 
     @Test
     void testGetCountryInContinent()
     {
+        app.getCountryInContinent("Asia", 4);
         app.getCountryInContinent("Asia", 99999);
     }
 
@@ -73,6 +72,7 @@ public class UnitTesting {
     @Test
     void testGetCitiesCountry()
     {
+        app.getCitiesCountry("Myanmar", 3);
         app.getCitiesCountry("Myanmar", 99999);
     }
 
@@ -146,6 +146,7 @@ public class UnitTesting {
     @Test
     void testGetCountryInRegion()
     {
+        app.getCountryInRegion("Southeast Asia", 4);
         app.getCountryInRegion(null, 99999);
     }
 
@@ -162,12 +163,16 @@ public class UnitTesting {
     }
 
     @Test
-    void testGetCity(){
+    void testGetCity()
+    {
         app.getCity(89);
+        app.getCity(99999);
     }
 
     @Test
-    void testGetCitiesContinent(){
+    void testGetCitiesContinent()
+    {
+        app.getCitiesContinent("Asia", 4);
         app.getCitiesContinent ("Asia", 99999);
     }
 
@@ -191,19 +196,25 @@ public class UnitTesting {
 
 
     @Test
-    void testgetCapitalWorld(){
+    void testgetCapitalWorld()
+    {
+        app.getCapitalWorld(2);
         app.getCapitalWorld(99999);
     }
 
 
     @Test
-    void testgetCapitalContinent(){
+    void testgetCapitalContinent()
+    {
+        app.getCapitalContinent("Asia", 3);
         app.getCapitalContinent("Asia", 99999);
     }
 //
 
     @Test
-    void testgetCapitalRegion(){
+    void testgetCapitalRegion()
+    {
+        app.getCapitalRegion("Caribbean", 5);
         app.getCapitalRegion("Caribbean", 99999);
     }
 
@@ -269,9 +280,89 @@ public class UnitTesting {
     }
 
 
+    // Failure Tests
+    @AfterAll
+    @Test
+    static void failureTest()
+    {
+        app.disconnect();
+        app.totalWorldPop();
+        app.countryLanguage();
+        app.getCountry(3);
+        app.getCountryInContinent("Asia", 99999);
+        ArrayList<Country> c = null;
+        app.displayCountryContinent(c);
+        app.getCountryInRegion(null, 99999);
+        app.getSpecificCity(123);
+        app.getCity(99999);
+        app.getCitiesContinent ("Asia", 99999);
+        app.getCitiesCountry("Myanmar", 3);
+        app.getCapitalWorld(2);
+        app.getCapitalContinent("Asia", 3);
+        app.getCapitalRegion("Caribbean", 5);
+        app.totalPopuRegion("Southeast Asia");
+        app.populationLivingInCitiesRegion(null);
+    }
 //    @Test
-//    void bla()
+//    void testTotalWorldPopFail()
 //    {
-//        app.getCitiesCountry("Myanmar");
+//        app.disconnect();
+//        app.totalWorldPop();
+//    }
+//
+//    @Test
+//    void testCountryLanguageFail()
+//    {
+//        app.disconnect();
+//        app.countryLanguage();
+//    }
+//
+//    @Test
+//    void testGetCountryFail()
+//    {
+//        app.disconnect();
+//        app.getCountry(3);
+//    }
+//
+//    @Test
+//    void testGetCountryInContinentFail()
+//    {
+//        app.disconnect();
+//        app.getCountryInContinent("Asia", 99999);
+//    }
+//
+//    @Test
+//    void testDisplayCountryInContinentNull()
+//    {
+//        ArrayList<Country> c = null;
+//        app.displayCountryContinent(c);
+//    }
+//
+//    @Test
+//    void testGetCountryInRegionFail()
+//    {
+//        app.disconnect();
+//        app.getCountryInRegion(null, 99999);
+//    }
+//
+//    @Test
+//    void testGetSpecificCityFail()
+//    {
+//        app.disconnect();
+//        app.getSpecificCity(123);
+//    }
+//
+//    @Test
+//    void testGetCityFail()
+//    {
+//        app.disconnect();
+//        app.getCity(99999);
+//    }
+//
+//    @Test
+//    void testGetCitiesContinentFail()
+//    {
+//        app.disconnect();
+//        app.getCitiesContinent ("Asia", 99999);
 //    }
 }
