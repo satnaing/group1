@@ -23,60 +23,6 @@ public class App
         // Input Display Method
         a.mainDisplay();
 
-        // CountryLanguage
-        //a.CountryLanguage();
-
-        //a.totalWorldPop();
-
-//        /*Country Report*/
-//        //Display Top Populated countries in the world
-//        a.getCountry();
-//        Country c1=a.getCountry();
-//        System.out.println(c1.getName()+"\t"+c1.getPopulation());
-//        a.displayCountry(c1);
-//
-//        ArrayList<Country> c = a.getCountryInContinent("North America");
-//        a.displayCountryContinent(c);
-//
-//        ArrayList<Country> countryInReg = a.getCountryInRegion("Southeast Asia");
-//        a.displayCountryInRegion(countryInReg);
-//
-//        // test integration city
-//        a.getSpecificCity(2710);
-//        //System.out.println(trycty);
-//
-//        /*City Report*/
-//        a.getCity();
-//        a.getCitiesContinent("Asia");
-//        a.getCitiesRegion("Southeast Asia");
-//        a.getCitiesDistrict();
-//        a.getCitiesCountry("Myanmar");
-//
-//
-//        /*Capital City Report*/
-//        a.getCapitalWorld();
-//        a.getCapitalContinent("Asia");
-//        a.getCapitalRegion("Southeast Asia");
-//
-//        /*Population Report*/
-//        a.totalPopuRegion("Oceania");
-//        System.out.println(a.totalPopuRegion("Southeast Asia"));
-//        System.out.println(a.populationLivingInCitiesRegion("Southeast Asia"));
-//
-//
-//        int total = a.totalPopuRegion("Southeast Asia");
-//        int liveCities = a.populationLivingInCitiesRegion("Southeast Asia");
-//        a.populationRgn(total, liveCities, "Southeast Asia");
-//
-//        String continent = "Asia";
-//        double totalPopuCon = a.totalPopuContinent(continent);
-//        double liveCitiesCon = a.populationLivingInCitiesContinent(continent);
-//        a.populationContinent(totalPopuCon, liveCitiesCon, continent);
-//
-//        double totalPopuCountry = a.totalPopuCountry("Myanmar");
-//        double liveCitiesCountry = a.populationLivingInCitiesCountry("Myanmar");
-//        a.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar");
-
         // Disconnect from database
         a.disconnect();
     }
@@ -132,7 +78,6 @@ public class App
                             again = askQuestion();
                             break;
                         case 4:
-//                    topNCountryWorld();
                             getCountry(askTopNumber("Country"));
                             again = askQuestion();
                             break;
@@ -224,11 +169,11 @@ public class App
                     System.out.println("-----------------------");
                     System.out.println(
                             "(1) All the capital cities in the world organised by largest population to smallest. " + "\n" +
-                                    "(2) All the capital cities in a continent organised by largest population to smallest. " + "\n" +
-                                    "(3) All the capital cities in a region organised by largest to smallest." + "\n" +
-                                    "(4) The top N populated capital cities in the world." + "\n" +
-                                    "(5) The top N populated capital cities in a continent." + "\n" +
-                                    "(6) The top N populated capital cities in a region."
+                            "(2) All the capital cities in a continent organised by largest population to smallest. " + "\n" +
+                            "(3) All the capital cities in a region organised by largest to smallest." + "\n" +
+                            "(4) The top N populated capital cities in the world." + "\n" +
+                            "(5) The top N populated capital cities in a continent." + "\n" +
+                            "(6) The top N populated capital cities in a region."
                     );
                     System.out.print("Enter an option : ");
                     int inputCapCityRpt = myObj.nextInt();  // Read user input
@@ -270,9 +215,12 @@ public class App
                     System.out.println("Population Report");
                     System.out.println("-----------------------");
                     System.out.println(
-                            "(1) The population of people, people living in cities, and people not living in cities in each continent." + "\n" +
-                                    "(2) The population of people, people living in cities, and people not living in cities in each region." + "\n" +
-                                    "(3) The population of people, people living in cities, and people not living in cities in each country."
+                        "(1) The population of people, people living in cities, and people not living in cities in each continent." + "\n" +
+                        "(2) The population of people, people living in cities, and people not living in cities in each region." + "\n" +
+                        "(3) The population of people, people living in cities, and people not living in cities in each country." + "\n" +
+                        "(4) The population of the world." + "\n" +
+                        "(5) The population of a district." + "\n" +
+                        "(6) The population of a city."
                     );
                     System.out.print("Enter an option : ");
                     int inputPopRpt = myObj.nextInt();  // Read user input
@@ -299,10 +247,20 @@ public class App
                             double liveCitiesCountry = populationLivingInCitiesCountry(country);
                             populationCountry(totalPopuCountry, liveCitiesCountry, country);
                             again = askQuestion();
-
-                            //double totalPopuCountry = a.totalPopuCountry("Myanmar");
-                            ////        double liveCitiesCountry = a.populationLivingInCitiesCountry("Myanmar");
-                            ////        a.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar");
+                            break;
+                        case 4:
+                            totalWorldPop();
+                            again = askQuestion();
+                            break;
+                        case 5:
+                            String district = askDistrict();
+                            totalPopuDistrict(district);
+                            again = askQuestion();
+                            break;
+                        case 6:
+                            String city = askCity();
+                            totalPopuCity(city);
+                            again = askQuestion();
                             break;
                         default:
                             again = true;
@@ -484,6 +442,28 @@ public class App
         return region;
     }
 
+
+    public String askDistrict()
+    {
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.print(
+                "Enter a region (eg. Mandalay) : ");
+        String district = myObj.nextLine();
+        System.out.println("_________________________");
+        return district;
+    }
+
+
+    public String askCity()
+    {
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.print(
+                "Enter a city (eg. Mandalay) : ");
+        String city = myObj.nextLine();
+        System.out.println("_________________________");
+        return city;
+    }
+
     private boolean askQuestion() {
         Scanner myObj = new Scanner(System.in);
         System.out.print("Do you want to continue? (Yes/No) : ");
@@ -564,23 +544,6 @@ public class App
         }
         return null;
     }
-
-
-//    public void displayCountry(Country c)
-//    {
-//        if (c == null){
-//            System.out.println("No Country");
-//        }
-//        else {
-//            System.out.println(c.getCode());
-//            System.out.println(c.getName());
-//            System.out.println(c.getContinent());
-//            System.out.println(c.getRegion());
-//            System.out.println(c.getPopulation());
-//            System.out.println(c.getCapital()+"\n");
-//        }
-//
-//    }
 
 
     /**
@@ -1279,6 +1242,81 @@ public class App
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get one city!");
+        }
+    }
+
+
+    /**
+     * Total population in a specific district
+     */
+    public void totalPopuDistrict(String district) {
+        City cty;
+        int totalPopulation = 0;
+        try{
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            String strSelect =
+                    "SELECT District, Population FROM city WHERE District=" + "\"" + district + "\"";
+            //Execute SQL statement
+            ResultSet rset=stmt.executeQuery(strSelect);
+            if (rset == null)
+            {
+                System.out.println("Not Found");
+            }
+            else
+            {
+                //Return new city if valid.
+                while (rset.next()){
+                    cty=new City();
+                    cty.setDistrict(rset.getString("District"));
+                    cty.setPopulation(rset.getInt("Population"));
+                    totalPopulation += cty.getPopulation();
+                }
+                System.out.println("Total Population of " + district + " : " + totalPopulation);
+                System.out.println("_____________________________");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get data!");
+        }
+    }
+
+
+    /**
+     * Total population in a specific city
+     */
+    public void totalPopuCity(String city) {
+        City cty;
+        int totalPopulation = 0;
+        try{
+            //Create an SQL statement
+            Statement stmt = con.createStatement();
+            String strSelect =
+                    "SELECT Population FROM city WHERE Name=" + "\"" + city + "\"";
+            //Execute SQL statement
+            ResultSet rset=stmt.executeQuery(strSelect);
+            if (rset == null)
+            {
+                System.out.println("Not Found");
+            }
+            else
+            {
+                //Return new city if valid.
+                while (rset.next()){
+                    cty=new City();
+                    cty.setPopulation(rset.getInt("Population"));
+                    totalPopulation += cty.getPopulation();
+                }
+                System.out.println("Total Population of " + city + " : " + totalPopulation);
+                System.out.println("_____________________________");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get data!");
         }
     }
 

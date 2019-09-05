@@ -272,13 +272,25 @@ public class UnitTesting {
     void testPopulationLivingInCitiesCountry(){
         app.populationLivingInCitiesCountry(null);
     }
-//
-//
+
+
     @Test
     void testPopulationCountry(){
         double totalPopuCountry = app.totalPopuCountry(null);
         double liveCitiesCountry = app.populationLivingInCitiesCountry("Myanmar");
         app.populationCountry(totalPopuCountry, liveCitiesCountry, "Myanmar"   );
+    }
+
+
+    @Test
+    void testPopulationDistrict(){
+        app.totalPopuDistrict("Mandalay");
+    }
+
+
+    @Test
+    void testPopulationCity(){
+        app.totalPopuCity("Mandalay");
     }
 
 
@@ -309,5 +321,7 @@ public class UnitTesting {
         app.populationLivingInCitiesContinent(null);
         app.totalPopuCountry("Myanmar");
         app.populationLivingInCitiesCountry(null);
+        app.totalPopuDistrict("Mandalay");
+        app.totalPopuCity("Mandalay");
     }
 }
