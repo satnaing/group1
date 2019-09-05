@@ -19,12 +19,19 @@ public class AppIntegrationTest
         app.connect("localhost:33060");
     }
 
-//    @Test
-//    void testGetCity()
-//    {
-//        City cty = app.getSpecificCity(2710);
-//        assertEquals(cty.getDistrict(),"Rangoon [Yangon]");
-//        assertEquals(cty.getName(), "Rangoon (Yangon)");
-//        assertEquals(cty.getPopulation(), 3361700);
-//    }
+    @Test
+    void testGetCity()
+    {
+        City cty = app.getSpecificCity(2710);
+        assertEquals(cty.getDistrict(),"Rangoon [Yangon]");
+        assertEquals(cty.getName(), "Rangoon (Yangon)");
+        assertEquals(cty.getPopulation(), 3361700);
+    }
+
+    @Test
+    void testing()
+    {
+
+    }
+
 }
