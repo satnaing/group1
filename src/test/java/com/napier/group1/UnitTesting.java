@@ -68,24 +68,19 @@ public class UnitTesting {
 //        app.displayCountry(null);
 //    }
 
-//    @Test
-//    void testGetCountryContinent()
-//    {
-//        app.getCountryInContinent();
-//    }
+    @Test
+    void testCountriesInContinent()
+    {
+        ArrayList<Country> c= new ArrayList<Country>();
+        app.displayCountryContinent(c);
+    }
 
-//    @Test
-//    void testCountriesInContinent()
-//    {
-//        ArrayList<Country> c= new ArrayList<Country>();
-//        app.displayCountryContinent(c);
-//    }
 
-//    @Test
-//    void testGetCountryInRegion()
-//    {
-//        app.getCountryInRegion(null, 99999);
-//    }
+    @Test
+    void testGetCountryInRegion()
+    {
+        app.getCountryInRegion(null, 99999);
+    }
 
     @Test
     void testDisplayCountryInRegion()
@@ -99,52 +94,52 @@ public class UnitTesting {
         app.getSpecificCity(123);
     }
 
-//    @Test
-//    void testGetCity(){
-//        app.getCity();
-//    }
+    @Test
+    void testGetCity(){
+        app.getCity(89);
+    }
 
-//    @Test
-//    void testGetCitiesContinent(){
-//        app.getCitiesContinent(null);
-//    }
-
-
-//    @Test
-//    void testGetCitiesRegion(){
-//        app.getCitiesRegion(null);
-//    }
+    @Test
+    void testGetCitiesContinent(){
+        app.getCitiesContinent ("Asia", 99999);
+    }
 
 
-//    @Test
-//    void testgetCitiesDistrict(){
-//        app.getCitiesDistrict();
-//    }
+    @Test
+    void testGetCitiesRegion(){
+        app.getCitiesRegion("Caribbean", 99999);
+    }
 
 
-//    @Test
-//    void testgetCitiesCountry(){
-//        app.getCitiesCountry(null);
-//    }
+    @Test
+    void testgetCitiesDistrict(){
+        app.getCitiesDistrict(99999);
+    }
 
 
-//    @Test
-//    void testgetCapitalWorld(){
-//        app.getCapitalWorld();
-//    }
+    @Test
+    void testgetCitiesCountry(){
+        app.getCitiesCountry("England", 99999);
+    }
+
+
+    @Test
+    void testgetCapitalWorld(){
+        app.getCapitalWorld(99999);
+    }
+
+
+    @Test
+    void testgetCapitalContinent(){
+        app.getCapitalContinent("Asia", 99999);
+    }
 //
-//
-//    @Test
-//    void testgetCapitalContinent(){
-//        app.getCapitalContinent(null);
-//    }
-//
-//
-//    @Test
-//    void testgetCapitalRegion(){
-//        app.getCapitalRegion(null);
-//    }
-//
+
+    @Test
+    void testgetCapitalRegion(){
+        app.getCapitalRegion("Caribbean", 99999);
+    }
+
 //
     @Test
     void testtotalPopuRegion(){

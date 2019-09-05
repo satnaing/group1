@@ -196,7 +196,6 @@ public class App
                             again = askQuestion();
                             break;
                         case 7:
-
                             getCitiesContinent(askContinent(), askTopNumber("City"));
                             again = askQuestion();
                             break;
