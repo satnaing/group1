@@ -111,10 +111,10 @@ public class UnitTesting {
     }
 
 
-    @Test
-    void testgetCitiesDistrict(){
-        app.getCitiesDistrict(99999);
-    }
+//    @Test
+//    void testgetCitiesDistrict(){
+//        app.getCitiesDistrict(99999);
+//    }
 
 
     @Test
