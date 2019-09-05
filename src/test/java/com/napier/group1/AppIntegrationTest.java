@@ -28,5 +28,10 @@ public class AppIntegrationTest
         assertEquals(cty.getPopulation(), 3361700);
     }
 
+    @Test
+    void testing()
+    {
+
+    }
 
 }
