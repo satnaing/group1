@@ -133,7 +133,7 @@ public class App
                             again = askQuestion();
                             break;
                         case 5:
-                            getCitiesDistrict(99999);
+                            getCitiesDistrict(askDistrict(),99999);
                             again = askQuestion();
                             break;
                         case 6:
@@ -154,7 +154,7 @@ public class App
                             break;
                         case 10:
 
-                            getCitiesDistrict(askTopNumber("City"));
+                            getCitiesDistrict(askDistrict(), askTopNumber("City"));
                             again = askQuestion();
                             break;
                         default:
@@ -947,15 +947,9 @@ public class App
      * All the cities in a district
      * organised by largest population to smallest.
      */
-    public void getCitiesDistrict(int num) {
+    public void getCitiesDistrict(String district, int num) {
         City city;
         try{
-            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-            System.out.print(
-                    "Enter a district of the world : ");
-            String district = myObj.nextLine();
-            System.out.println("_________________________");
-
             //Create an SQL statement
             Statement stmt = con.createStatement();
             String strSelect;

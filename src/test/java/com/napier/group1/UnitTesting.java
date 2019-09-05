@@ -31,6 +31,14 @@ public class UnitTesting {
 
 
     @Test
+    void testGetCitiesDistrict()
+    {
+        app.getCitiesDistrict("Mandalay", 99999);
+        app.getCitiesDistrict("Mandalay", 2);
+    }
+
+
+    @Test
     void testCountryLanguage()
     {
         app.countryLanguage();
@@ -96,44 +104,6 @@ public class UnitTesting {
     {
         app.totalPopuCountry("Myanmar");
     }
-
-
-
-//    @Test
-//    void testMainDisplay()
-//    {
-//        app.mainDisplay();
-//    }
-//
-//    @Test
-//    void testAskContinent()
-//    {
-//        app.askContinent();
-//    }
-//
-//    @Test
-//    void testAskRegion()
-//    {
-//        app.askRegion();
-//    }
-//
-//    @Test
-//    void testAskCountry()
-//    {
-//        app.askCountry();
-//    }
-
-//    @Test
-//    void testGetCountry()
-//    {
-//        Country c1 = app.getCountry(99999);
-//    }
-
-//    @Test
-//    void displayCountry()
-//    {
-//        app.displayCountry(null);
-//    }
 
     @Test
     void testCountriesInContinent()
@@ -323,5 +293,6 @@ public class UnitTesting {
         app.populationLivingInCitiesCountry(null);
         app.totalPopuDistrict("Mandalay");
         app.totalPopuCity("Mandalay");
+        app.getCitiesDistrict("Mandalay", 2);
     }
 }
