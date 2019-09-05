@@ -13,29 +13,29 @@ public class Country {
 
     private String Capital;
 
-    public Country(String code, String name, String continent, String region, int population, String capital) {
-        Code = code;
-        Name = name;
-        Continent = continent;
-        Region = region;
-        Population = population;
-        Capital = capital;
-    }
+//    public Country(String code, String name, String continent, String region, int population, String capital) {
+//        Code = code;
+//        Name = name;
+//        Continent = continent;
+//        Region = region;
+//        Population = population;
+//        Capital = capital;
+//    }
 
     public Country() {
     }
 
-    @Override
-    public String toString() {
-        return "Country{" +
-                "Code='" + Code + '\'' +
-                ", Name='" + Name + '\'' +
-                ", Continent='" + Continent + '\'' +
-                ", Region='" + Region + '\'' +
-                ", Population=" + Population +
-                ", Capital='" + Capital + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Country{" +
+//                "Code='" + Code + '\'' +
+//                ", Name='" + Name + '\'' +
+//                ", Continent='" + Continent + '\'' +
+//                ", Region='" + Region + '\'' +
+//                ", Population=" + Population +
+//                ", Capital='" + Capital + '\'' +
+//                '}';
+//    }
 
     public String getCode() {
         return Code;

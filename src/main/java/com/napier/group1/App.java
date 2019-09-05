@@ -566,21 +566,21 @@ public class App
     }
 
 
-    public void displayCountry(Country c)
-    {
-        if (c == null){
-            System.out.println("No Country");
-        }
-        else {
-            System.out.println(c.getCode());
-            System.out.println(c.getName());
-            System.out.println(c.getContinent());
-            System.out.println(c.getRegion());
-            System.out.println(c.getPopulation());
-            System.out.println(c.getCapital()+"\n");
-        }
-
-    }
+//    public void displayCountry(Country c)
+//    {
+//        if (c == null){
+//            System.out.println("No Country");
+//        }
+//        else {
+//            System.out.println(c.getCode());
+//            System.out.println(c.getName());
+//            System.out.println(c.getContinent());
+//            System.out.println(c.getRegion());
+//            System.out.println(c.getPopulation());
+//            System.out.println(c.getCapital()+"\n");
+//        }
+//
+//    }
 
 
     /**
