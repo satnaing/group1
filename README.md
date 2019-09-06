@@ -51,3 +51,10 @@
 | 31 | The population of a city. | Yes | ![](screenshot/31.png) |
 | 32 | The number of people who speak the Chinese/English/Hindi/Spanish/Arabic languages from greatest number to smallest, including the percentage of the world population. | Yes | ![](screenshot/32.png) |
 
+|      | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable | Average |
+|------|---------------|---------------|---------------|---------------|-------------------|-------|
+| Moe Myint Aung Moe | 0.25 | 0.3 | 0.25 | 0.3 | 0.2 | 0.26 |
+| Sat Naing | 0.25 | 0.3 | 0.4 | 0.4 | 0.4 | 0.35 |
+| Bhone Htut Kyaw | 0.25 | 0.2 | 0.2 | 0.2 | 0.2 | 0.21 |
+| Thant Zin Win | 0.25 | 0.2 | 0.15 | 0.1 | 0.2 | 0.18 |
+

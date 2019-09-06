@@ -1,0 +1,42 @@
+@startuml
+'default
+top to bottom direction
+actor user as "User"
+
+rectangle world.sql
+
+rectangle "World Fact Book" {
+    usecase UC1 as "Country Report"
+    usecase UC2 as "City Report"
+    usecase UC3 as "Capital City Report"
+    usecase UC4 as "Population Report"
+    usecase UC5 as "Language Report"
+
+
+
+    usecase UCa as "Print world population
+    information"
+
+    :user: -down-> UC1
+    UC1 ..> UCa : include
+    UC1 - world.sql
+
+    :user: -down-> UC2
+    UC2 ..> UCa : include
+    UC2 - world.sql
+
+    :user: -down-> UC3
+    UC3 ..> UCa : include
+    UC3 - world.sql
+
+    :user: -down-> UC4
+    UC4 ..> UCa : include
+    UC4 - world.sql
+
+    :user: -down-> UC5
+    UC5 ..> UCa : include
+    UC5 - world.sql
+
+}
+
+@enduml
