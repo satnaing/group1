@@ -20,44 +20,44 @@ public class City {
     public City() {
     }
 
-    public City(Country country, int ID, String name, String district, int population, String countryCode, String countryName) {
-        this.country = country;
-        this.ID = ID;
-        Name = name;
-        District = district;
-        Population = population;
-        CountryCode = countryCode;
-        CountryName = countryName;
-    }
+//    public City(Country country, int ID, String name, String district, int population, String countryCode, String countryName) {
+//        this.country = country;
+//        this.ID = ID;
+//        Name = name;
+//        District = district;
+//        Population = population;
+//        CountryCode = countryCode;
+//        CountryName = countryName;
+//    }
 
-    @Override
-    public String toString() {
-        return "City{" +
-                "country=" + country +
-                ", ID=" + ID +
-                ", Name='" + Name + '\'' +
-                ", District='" + District + '\'' +
-                ", Population=" + Population +
-                ", CountryCode='" + CountryCode + '\'' +
-                ", CountryName='" + CountryName + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "City{" +
+//                "country=" + country +
+//                ", ID=" + ID +
+//                ", Name='" + Name + '\'' +
+//                ", District='" + District + '\'' +
+//                ", Population=" + Population +
+//                ", CountryCode='" + CountryCode + '\'' +
+//                ", CountryName='" + CountryName + '\'' +
+//                '}';
+//    }
 
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
+//    public Country getCountry() {
+//        return country;
+//    }
+//
+//    public void setCountry(Country country) {
+//        this.country = country;
+//    }
+//
+//    public int getID() {
+//        return ID;
+//    }
+//
+//    public void setID(int ID) {
+//        this.ID = ID;
+//    }
 
     public String getName() {
         return Name;
@@ -83,13 +83,13 @@ public class City {
         Population = population;
     }
 
-    public String getCountryCode() {
-        return CountryCode;
-    }
-
-    public void setCountryCode(String countryCode) {
-        CountryCode = countryCode;
-    }
+//    public String getCountryCode() {
+//        return CountryCode;
+//    }
+//
+//    public void setCountryCode(String countryCode) {
+//        CountryCode = countryCode;
+//    }
 
     public String getCountryName() {
         return CountryName;

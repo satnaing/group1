@@ -27,11 +27,4 @@ public class AppIntegrationTest
         assertEquals(cty.getName(), "Rangoon (Yangon)");
         assertEquals(cty.getPopulation(), 3361700);
     }
-
-    @Test
-    void testing()
-    {
-
-    }
-
 }

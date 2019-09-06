@@ -7,23 +7,23 @@ public class CountryLanguage {
 
     private float Population;
 
-    public CountryLanguage(String language, float percentage, float population) {
-        Language = language;
-        Percentage = percentage;
-        Population = population;
-    }
+//    public CountryLanguage(String language, float percentage, float population) {
+//        Language = language;
+//        Percentage = percentage;
+//        Population = population;
+//    }
 
     public CountryLanguage() {
     }
 
-    @Override
-    public String toString() {
-        return "CountryLanguage{" +
-                "Language='" + Language + '\'' +
-                ", Percentage=" + Percentage +
-                ", Population=" + Population +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "CountryLanguage{" +
+//                "Language='" + Language + '\'' +
+//                ", Percentage=" + Percentage +
+//                ", Population=" + Population +
+//                '}';
+//    }
 
     public String getLanguage() {
         return Language;
